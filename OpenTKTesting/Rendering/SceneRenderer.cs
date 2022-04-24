@@ -1,16 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using Assimp;
-using Assimp.Configs;
-using DevILSharp;
-using OpenTK.Core.Native;
+using SixLabors.ImageSharp;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
-using OpenTKTesting.Utils;
+using SixLabors.ImageSharp.Advanced;
+using SixLabors.ImageSharp.PixelFormats;
 using EnableCap = OpenTK.Graphics.OpenGL4.EnableCap;
-using Image = System.Drawing.Image;
 using PixelFormat = OpenTK.Graphics.OpenGL4.PixelFormat;
 using PrimitiveType = OpenTK.Graphics.OpenGL4.PrimitiveType;
 using TextureWrapMode = OpenTK.Graphics.OpenGL.TextureWrapMode;
@@ -64,6 +59,7 @@ public class SceneRenderer : IRenderingItem
 
     public void Init()
     {
+
         _program = new ShaderProgram(new[]
         {
             new Shader(ShaderType.VertexShader, "../../../Shaders/mesh_vert.glsl"),
@@ -71,9 +67,9 @@ public class SceneRenderer : IRenderingItem
         });
 
         _depthRenderPass.Init();
-        Console.WriteLine(_depthRenderPass.FBO);
+
         var assimpContext = new AssimpContext();
-        _scene = assimpContext.ImportFile("./Assets/lost_empire.obj", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
+        _scene = assimpContext.ImportFile("./Assets/Dragon25.fbx", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
 
         LoadMaterials();
         LoadMeshes();
@@ -172,18 +168,10 @@ public class SceneRenderer : IRenderingItem
 
     private (int width, int height, byte[] data) LoadTexture(string filename)
     {
-        using var bmp = Image.FromFile(filename) as Bitmap;
-        if (bmp == null)
-            throw new Exception("Unable to load texture");
-        Console.WriteLine($"Loaded {filename}");
-
-        var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-        var byteCount = bmpData.Width * bmpData.Height * 3;
-        var pixels = new byte[byteCount];
-        var ptrFirstPixel = bmpData.Scan0;
-        Marshal.Copy(ptrFirstPixel, pixels, 0, pixels.Length);
-        bmp.UnlockBits(bmpData);
-        return (bmp.Width, bmp.Height, pixels);
+        var img = Image.Load<Rgb24>(filename);
+        var pixels = new byte[img.Width * img.Height * 3];
+        img.Frames.RootFrame.CopyPixelDataTo(pixels);
+        return (img.Width, img.Height, pixels);
     }
 
     private int GenTexture(TextureSlot s)
@@ -195,16 +183,19 @@ public class SceneRenderer : IRenderingItem
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Repeat);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Repeat);
         var fileName = "./Assets/" + s.FilePath;
+        fileName = fileName.Replace("\\", "/");
+        (int width, int height, byte[] data) img;
         if (_scene.Textures.Any() && _scene.Textures[s.TextureIndex].IsCompressed)
         {
             var texture = _scene.Textures[s.TextureIndex];
-            fileName = "./Assets/tmp." + texture.CompressedFormatHint;
-            using var stream = File.Open(fileName, FileMode.Create);
-            using var binaryWriter = new BinaryWriter(stream);
-            binaryWriter.Write(texture.CompressedData);
+            var i = Image.Load<Rgb24>(texture.CompressedData);
+            var buffer = new byte[i.Width * i.Height * 3];
+            i.CopyPixelDataTo(buffer);
+            img = (i.Width, i.Height, buffer);
         }
-        var img = LoadTexture(fileName);
-        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, img.width, img.height, 0, PixelFormat.Bgr, PixelType.UnsignedByte, img.data);
+        else
+            img = LoadTexture(fileName);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, img.width, img.height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, img.data);
         return id;
     }
 
@@ -218,7 +209,6 @@ public class SceneRenderer : IRenderingItem
             var diffuseIds = diffuseSlots.Select(GenTexture).ToArray();
             var specularSlots = m.GetMaterialTextures(TextureType.Specular).Take(10);
             var specularIds = specularSlots.Select(GenTexture).ToArray();
-
             _materialRefs[i] = new MaterialRef()
             {
                 TextureDiffuse = diffuseIds,
@@ -270,10 +260,10 @@ public class SceneRenderer : IRenderingItem
             }
         }
 
-        new VertexBufferObject(vertices.ToArray());
+        _ = new VertexBufferObject(vertices.ToArray());
 
         var ind = _scene.Meshes.SelectMany(e => e.GetUnsignedIndices()).ToArray();
-        new ElementBufferObject(ind);
+        _ = new ElementBufferObject(ind);
 
         var currentVert = 0;
         var currentInd = 0;

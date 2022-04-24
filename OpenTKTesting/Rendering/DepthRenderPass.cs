@@ -16,16 +16,15 @@ class DepthRenderPass
 
     public void Init()
     {
-
         FBO = GL.GenFramebuffer();
-        
+
         DepthTexture = GL.GenTexture();
         GL.BindTexture(TextureTarget.Texture2D, DepthTexture);
         GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.DepthComponent, 800, 600, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Clamp);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Clamp);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
         
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, FBO);
         GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, FBO);
@@ -43,6 +42,7 @@ class DepthRenderPass
             new Shader(ShaderType.VertexShader, "../../../Shaders/depth_vert.glsl"),
             new Shader(ShaderType.FragmentShader, "../../../Shaders/depth_frag.glsl")
         });
+
     }
 
     public void PreRender()
