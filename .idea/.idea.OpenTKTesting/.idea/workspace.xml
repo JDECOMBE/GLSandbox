@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="cleaning up + basic test for OSX support">
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_vert.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Cube.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Cube.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/DepthRenderPass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/DepthRenderPass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/ParticuleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/ParticuleSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_vert.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +46,18 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1c9cff59d04d4efd932aacd1fdbf5a7850000/9a/86fc0bbf/Matrix4.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b50c899a3f83542f26844ae6e447c49bd7bb661abc2f4565838e5235a52423/Image.LoadPixelData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49ab58521bb14eb89572c0e808f591b640b800/4a/7e2cb69a/GL.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d46bd8425e11c1765d24f63eb12484e04a92f2dc9d4a2fe3c2e47f35b1d3/Image.Decode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/40/6f2b9c60/TextureType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b70e7642ea1841178943d0ed45da5667390e00/9e/2c1eb692/GL.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49ab58521bb14eb89572c0e808f591b640b800/5b/a35fef57/ShaderType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49ab58521bb14eb89572c0e808f591b640b800/17/925283fe/ShaderHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49ab58521bb14eb89572c0e808f591b640b800/91/c9f4cfdf/PixelFormat.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7a9ad2597224d3d578188917875d83477882e03550c1d9153da781fae14e7bfc/Image.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/jeremiahdecombe/DevPerso/GLSandbox/OpenTKTesting/Rendering/SceneRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49ab58521bb14eb89572c0e808f591b640b800/f1/bf55c319/ProgramHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/59/ac8d142b/GLFWProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92ab78f138b33f28a2cab318b7a7831cd0ace5958fc959c666aa4b67fd2976/Rgb24.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/jeremiahdecombe/DevPerso/GLSandbox/OpenTKTesting/Game/Game.cs" root0="SKIP_HIGHLIGHTING" />
@@ -133,8 +133,23 @@
       <workItem from="1646057533987" duration="4771000" />
       <workItem from="1646574529893" duration="6342000" />
       <workItem from="1650661831988" duration="1923000" />
-      <workItem from="1650664780135" duration="12672000" />
+      <workItem from="1650664780135" duration="15150000" />
     </task>
+    <task id="LOCAL-00001" summary="cleaning up + basic test for OSX support">
+      <created>1650795493397</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1650795493397</updated>
+    </task>
+    <task id="LOCAL-00002" summary="cleaning up + basic test for OSX support">
+      <created>1650795538044</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650795538044</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

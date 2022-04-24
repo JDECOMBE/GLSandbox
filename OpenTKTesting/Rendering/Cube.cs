@@ -1,5 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTKTesting.Utils;
 

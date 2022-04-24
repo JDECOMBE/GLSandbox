@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTKTesting.Utils;
 
@@ -55,7 +55,7 @@ public class ParticuleSystem : IRenderingItem
 
         _vao = new VertexArrayObject();
         _ssbo = new ShaderStorageBufferObject();
-        _ssbo.ImmutableAllocation(System.Runtime.CompilerServices.Unsafe.SizeOf<Particle>() * Particles.Length, Particles, BufferStorageFlags.DynamicStorageBit);
+        _ssbo.ImmutableAllocation(System.Runtime.CompilerServices.Unsafe.SizeOf<Particle>() * Particles.Length, Particles, BufferStorageMask.DynamicStorageBit);
     }
 
     public void Update(float dts)
@@ -70,6 +70,6 @@ public class ParticuleSystem : IRenderingItem
         _program.Use();
         _program.Upload("projViewMatrix", camera.ViewProjection);
         GL.DrawArrays(PrimitiveType.Points, 0, Particles.Length);
-        GL.MemoryBarrier(MemoryBarrierFlags.ShaderStorageBarrierBit);
+        GL.MemoryBarrier(MemoryBarrierMask.ShaderStorageBarrierBit);
     }
 }

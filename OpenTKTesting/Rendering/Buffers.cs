@@ -1,10 +1,11 @@
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 
 namespace OpenTKTesting.Rendering;
 
 public class VertexArrayObject
 {
-    public int ID { get; }
+    public VertexArrayHandle ID { get; }
 
     public VertexArrayObject()
     {
@@ -12,7 +13,7 @@ public class VertexArrayObject
         GL.BindVertexArray(ID);
     }
 
-    public void SetAttribPointer(int index, int size, int stride, IntPtr offset, bool normalize = false)
+    public void SetAttribPointer(uint index, int size, int stride, IntPtr offset, bool normalize = false)
     {
         GL.VertexAttribPointer(index, size, VertexAttribPointerType.Float, normalize, stride, offset);
         GL.EnableVertexAttribArray(index);
@@ -25,27 +26,27 @@ public class VertexArrayObject
 
     public void Unbind()
     {
-        GL.BindVertexArray(0);
+        GL.BindVertexArray(VertexArrayHandle.Zero);
     }
 }
 
 public class VertexBufferObject : Buffer<float>
 {
-    public VertexBufferObject(float[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ArrayBuffer, data.Length, data, usage)
+    public VertexBufferObject(float[] data, BufferUsageARB usage = BufferUsageARB.StaticDraw) : base(BufferTargetARB.ArrayBuffer, data.Length, data, usage)
     {
     }
 }
 
 public class ElementBufferObject : Buffer<uint>
 {
-    public ElementBufferObject(uint[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ElementArrayBuffer, data.Length, data, usage)
+    public ElementBufferObject(uint[] data, BufferUsageARB usage = BufferUsageARB.StaticDraw) : base(BufferTargetARB.ElementArrayBuffer, data.Length, data, usage)
     {
     }
 }
 
 public class ShaderStorageBufferObject
 {
-    public int ID { get; }
+    public BufferHandle ID { get; }
 
     public ShaderStorageBufferObject()
     {
@@ -56,36 +57,39 @@ public class ShaderStorageBufferObject
 
     public void BindBuffer()
     {
-        GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
-        GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 0, ID);
+        GL.BindBuffer(BufferTargetARB.ShaderStorageBuffer, ID);
+        GL.BindBufferBase(BufferTargetARB.ShaderStorageBuffer, 0, ID);
     }
 
-    public void ImmutableAllocation<T>(int size, T[] data, BufferStorageFlags bufferStorageFlags) where T : struct
+    public unsafe void ImmutableAllocation<T>(int size, T[] data, BufferStorageMask bufferStorageFlags) where T : unmanaged
     {
-        GL.NamedBufferStorage(ID, size, data, bufferStorageFlags);
+        fixed (T* ptr = data)
+            GL.NamedBufferStorage(ID, size, *ptr, bufferStorageFlags);
     }
 }
 
-public abstract class Buffer<T> where T : struct
+public abstract class Buffer<T> where T : unmanaged
 {
-    public int ID { get; }
-    public BufferTarget Target { get; }
+    public BufferHandle ID { get; }
+    public BufferTargetARB Target { get; }
 
-    protected Buffer(BufferTarget target, int bufferSize, T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw)
+    protected unsafe Buffer(BufferTargetARB target, int bufferSize, T[] data, BufferUsageARB usage = BufferUsageARB.StaticDraw)
     {
         Target = target;
         ID = GL.GenBuffer();
         Bind();
-        GL.BufferData(Target, bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, usage);
+        
+        fixed (T* ptr = data)
+            GL.BufferData(Target, bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), *ptr, usage);
     }
 
-    public virtual void Bind()
+    public void Bind()
     {
         GL.BindBuffer(Target, ID);
     }
 
-    public virtual void Unbind()
+    public void Unbind()
     {
-        GL.BindBuffer(Target, 0);
+        GL.BindBuffer(Target, BufferHandle.Zero);
     }
 }

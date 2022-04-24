@@ -1,13 +1,12 @@
-using System.Runtime.InteropServices;
 using Assimp;
+using OpenTK.Graphics;
 using SixLabors.ImageSharp;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
-using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.PixelFormats;
-using EnableCap = OpenTK.Graphics.OpenGL4.EnableCap;
-using PixelFormat = OpenTK.Graphics.OpenGL4.PixelFormat;
-using PrimitiveType = OpenTK.Graphics.OpenGL4.PrimitiveType;
+using EnableCap = OpenTK.Graphics.OpenGL.EnableCap;
+using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
+using PrimitiveType = OpenTK.Graphics.OpenGL.PrimitiveType;
 using TextureWrapMode = OpenTK.Graphics.OpenGL.TextureWrapMode;
 
 namespace OpenTKTesting.Rendering;
@@ -27,9 +26,9 @@ public class SceneRenderer : IRenderingItem
 
     private class MaterialRef
     {
-        public int[] TextureDiffuse { get; init; }
+        public TextureHandle[] TextureDiffuse { get; init; }
         public Vector3 FallbackDiffuse { get; init; }
-        public int[] TextureSpecular { get; init; }
+        public TextureHandle[] TextureSpecular { get; init; }
         public Vector3 FallbackSpecular { get; init; }
         public float Shininess { get; init; }
     }
@@ -90,7 +89,7 @@ public class SceneRenderer : IRenderingItem
         RenderMeshes(_depthRenderPass.Program, false);
         _depthRenderPass.PostRender(camera);
 
-        GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, FramebufferHandle.Zero);
         _program.Use();
         _program.Upload("viewProjection", camera.ViewProjection);
         _program.Upload("lightViewProjection", lightViewProjection);
@@ -102,7 +101,7 @@ public class SceneRenderer : IRenderingItem
         _program.Upload("light.diffuse", new Vector3(0.5f, 0.5f, 0.5f));
         _program.Upload("light.specular", new Vector3(1f));
         GL.ActiveTexture(TextureUnit.Texture0);
-        GL.BindTexture(TextureTarget.Texture2D, _depthRenderPass.DepthTexture);
+        GL.BindTexture(TextureTarget.Texture2d, _depthRenderPass.DepthTexture);
         _program.Upload("shadowMap", 0);
 
         RenderMeshes(_program);
@@ -133,12 +132,12 @@ public class SceneRenderer : IRenderingItem
     {
         if (texture)
         {
-            var activeTexture = 1;
+            uint activeTexture = 1;
             for (var i = 0; i < m.Material.TextureDiffuse.Length; i++)
             {
                 var id = m.Material.TextureDiffuse[i];
                 GL.ActiveTexture(TextureUnit.Texture0 + activeTexture);
-                GL.BindTexture(TextureTarget.Texture2D, id);
+                GL.BindTexture(TextureTarget.Texture2d, id);
                 _program.Upload($"material.diffuse[{i}]", activeTexture);
                 activeTexture++;
             }
@@ -151,7 +150,7 @@ public class SceneRenderer : IRenderingItem
             {
                 var id = m.Material.TextureSpecular[i];
                 GL.ActiveTexture(TextureUnit.Texture0 + activeTexture);
-                GL.BindTexture(TextureTarget.Texture2D, id);
+                GL.BindTexture(TextureTarget.Texture2d, id);
                 _program.Upload($"material.specular[{i}]", activeTexture);
                 activeTexture++;
             }
@@ -174,14 +173,14 @@ public class SceneRenderer : IRenderingItem
         return (img.Width, img.Height, pixels);
     }
 
-    private int GenTexture(TextureSlot s)
+    private TextureHandle GenTexture(TextureSlot s)
     {
         var id = GL.GenTexture();
-        GL.BindTexture(TextureTarget.Texture2D, id);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Repeat);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Repeat);
+        GL.BindTexture(TextureTarget.Texture2d, id);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Repeat);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Repeat);
         var fileName = "./Assets/" + s.FilePath;
         fileName = fileName.Replace("\\", "/");
         (int width, int height, byte[] data) img;
@@ -195,7 +194,7 @@ public class SceneRenderer : IRenderingItem
         }
         else
             img = LoadTexture(fileName);
-        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, img.width, img.height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, img.data);
+        GL.TexImage2D(TextureTarget.Texture2d, 0, (int)PixelFormat.Rgb, img.width, img.height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, img.data);
         return id;
     }
 

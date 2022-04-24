@@ -1,12 +1,12 @@
-using Assimp;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTKTesting.Rendering;
 using OpenTKTesting.Utils;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
-using TextureWrapMode = OpenTK.Graphics.OpenGL4.TextureWrapMode;
+using TextureWrapMode = OpenTK.Graphics.OpenGL.TextureWrapMode;
 
 namespace OpenTKTesting.Game;
 
@@ -14,8 +14,8 @@ public class SimpleSpriteGame : GameWindow
 {
     private ShaderProgram _program;
     private VertexArrayObject _vao;
-    private int _textureId;
-    private int _textureAlphaChannelId;
+    private TextureHandle _textureId;
+    private TextureHandle _textureAlphaChannelId;
 
     public SimpleSpriteGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -70,14 +70,14 @@ public class SimpleSpriteGame : GameWindow
         _program.Use();
         
         GL.ActiveTexture(TextureUnit.Texture0);
-        GL.BindTexture(TextureTarget.Texture2D, _textureId);
+        GL.BindTexture(TextureTarget.Texture2d, (TextureHandle)_textureId);
         _program.Upload("tex", 0);
         
         GL.ActiveTexture(TextureUnit.Texture1);
-        GL.BindTexture(TextureTarget.Texture2D, _textureAlphaChannelId);
+        GL.BindTexture(TextureTarget.Texture2d, (TextureHandle)_textureAlphaChannelId);
         _program.Upload("alphaChannel", 1);
 
-        GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
+        GL.DrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, 0);
 
         SwapBuffers();
         base.OnRenderFrame(args);
@@ -101,18 +101,18 @@ public class SimpleSpriteGame : GameWindow
         return (img.Width, img.Height, pixels);
     }
     
-    private int GenTexture(string fileName)
+    private TextureHandle GenTexture(string fileName)
     {
         var id = GL.GenTexture();
-        GL.BindTexture(TextureTarget.Texture2D, id);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Repeat);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Repeat);
+        GL.BindTexture(TextureTarget.Texture2d, id);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Repeat);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Repeat);
         fileName = fileName.Replace("\\", "/");
         (int width, int height, byte[] data) img;
         img = LoadTexture(fileName);
-        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, img.width, img.height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, img.data);
+        GL.TexImage2D(TextureTarget.Texture2d, 0, (int)PixelFormat.Rgb, img.width, img.height, 0, PixelFormat.Rgb, PixelType.UnsignedByte, img.data);
         return id;
     }
 }

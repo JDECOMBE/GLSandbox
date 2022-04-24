@@ -1,4 +1,5 @@
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTKTesting.Utils;
 
@@ -6,7 +7,7 @@ namespace OpenTKTesting.Rendering;
 
 internal class Shader : IDisposable
 {
-    public readonly int ID;
+    public readonly ShaderHandle ID;
     public readonly ShaderType ShaderType;
     public string FilePath { get; }
 
@@ -19,14 +20,14 @@ internal class Shader : IDisposable
         GL.ShaderSource(ID, filePath.GetFileContent());
         GL.CompileShader(ID);
 
-        string compileInfo = GL.GetShaderInfoLog(ID);
-        if (compileInfo != string.Empty)
-        {
-            if (compileInfo.StartsWith("ERROR"))
-                Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(compileInfo);
-            Console.ResetColor();
-        }
+        GL.GetShaderInfoLog(ID, out var compileInfo);
+        if (compileInfo == string.Empty)
+            return;
+        
+        if (compileInfo.StartsWith("ERROR"))
+            Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(compileInfo);
+        Console.ResetColor();
     }
 
     public void Dispose()
@@ -35,13 +36,13 @@ internal class Shader : IDisposable
     }
 }
 
-class ShaderProgram : IDisposable
+internal class ShaderProgram : IDisposable
 {
-    private static int lastBindedID = -1;
+    private static ProgramHandle _lastBoundID = ProgramHandle.Zero;
 
-    public int ID { get; private set; }
-    private Dictionary<ShaderType, string> _shaderRefs = new Dictionary<ShaderType, string>();
-    private List<FileSystemWatcher> _watchers = new();
+    public ProgramHandle ID { get; private set; }
+    private readonly Dictionary<ShaderType, string> _shaderRefs = new Dictionary<ShaderType, string>();
+    private readonly List<FileSystemWatcher> _watchers = new();
     private bool _requestRebuildAtNextBind = false;
     private DateTime _lastWriteDateTime = DateTime.MinValue;
 
@@ -50,12 +51,12 @@ class ShaderProgram : IDisposable
         foreach (var s in shaders)
         {
             _shaderRefs.Add(s.ShaderType, s.FilePath);
-            var w = new FileSystemWatcher(Path.GetDirectoryName(s.FilePath))
+            var w = new FileSystemWatcher(Path.GetDirectoryName(s.FilePath) ?? string.Empty)
             {
                 NotifyFilter = NotifyFilters.LastWrite,
                 Filter = Path.GetFileName(s.FilePath) ?? string.Empty
             };
-            w.Changed += (_, e) =>
+            w.Changed += (_, __) =>
             {
                 var lastWriteTime = File.GetLastWriteTime(s.FilePath);
                 if (lastWriteTime.Minute != _lastWriteDateTime.Minute ||
@@ -77,7 +78,7 @@ class ShaderProgram : IDisposable
 
     private void BuildShader(params Shader[] shaders)
     {
-        if (shaders is null || shaders.Length == 0 || shaders.Any(s => s.ID == 0))
+        if (shaders is null || shaders.Length == 0 || shaders.Any(s => s.ID == ShaderHandle.Zero))
             throw new IndexOutOfRangeException($"Shader array is empty or null. Or at least one shader has ID 0");
 
         if (!shaders.All(s => shaders.All(s1 => s.ID == s1.ID || s1.ShaderType != s.ShaderType)))
@@ -111,140 +112,140 @@ class ShaderProgram : IDisposable
             _requestRebuildAtNextBind = false;
         }
 
-        if (lastBindedID != ID)
+        if (_lastBoundID != ID)
         {
             GL.UseProgram(ID);
-            lastBindedID = ID;
+            _lastBoundID = ID;
         }
     }
 
-    public static void Use(int id)
+    public static void Use(ProgramHandle id)
     {
-        if (lastBindedID != id)
+        if (_lastBoundID != id)
         {
             GL.UseProgram(id);
-            lastBindedID = id;
+            _lastBoundID = id;
         }
     }
 
     public static void UploadToProgram(int id, int location, Matrix4 matrix4, bool transpose = false)
     {
-        GL.ProgramUniformMatrix4(id, location, transpose, ref matrix4);
+        GL.ProgramUniformMatrix4f((ProgramHandle)id, location, transpose, matrix4);
     }
 
     public void Upload(int location, Matrix4 matrix4, bool transpose = false)
     {
-        GL.ProgramUniformMatrix4(ID, location, transpose, ref matrix4);
+        GL.ProgramUniformMatrix4f(ID, location, transpose, matrix4);
     }
 
     public void Upload(string name, Matrix4 matrix4, bool transpose = false)
     {
-        GL.ProgramUniformMatrix4(ID, GetUniformLocation(name), transpose, ref matrix4);
+        GL.ProgramUniformMatrix4f(ID, GetUniformLocation(name), transpose, matrix4);
     }
 
     public static void UploadToProgram(int id, int location, Vector4 vector4)
     {
-        GL.ProgramUniform4(id, location, vector4);
+        GL.ProgramUniform4f((ProgramHandle)id, location, vector4);
     }
 
     public void Upload(int location, Vector4 vector4)
     {
-        GL.ProgramUniform4(ID, location, vector4);
+        GL.ProgramUniform4f(ID, location, vector4);
     }
 
     public void Upload(string name, Vector4 vector4)
     {
-        GL.ProgramUniform4(ID, GetUniformLocation(name), vector4);
+        GL.ProgramUniform4f(ID, GetUniformLocation(name), vector4);
     }
 
     public static void UploadToProgram(int id, int location, Vector3 vector3)
     {
-        GL.ProgramUniform3(id, location, vector3);
+        GL.ProgramUniform3f((ProgramHandle)id, location, vector3);
     }
 
     public void Upload(int location, Vector3 vector3)
     {
-        GL.ProgramUniform3(ID, location, vector3);
+        GL.ProgramUniform3f(ID, location, vector3);
     }
 
     public void Upload(string name, Vector3 vector3)
     {
-        GL.ProgramUniform3(ID, GetUniformLocation(name), vector3);
+        GL.ProgramUniform3f(ID, GetUniformLocation(name), vector3);
     }
 
     public static void UploadToProgram(int id, int location, Vector2 vector2)
     {
-        GL.ProgramUniform2(id, location, vector2);
+        GL.ProgramUniform2f((ProgramHandle)id, location, vector2);
     }
 
     public void Upload(int location, Vector2 vector2)
     {
-        GL.ProgramUniform2(ID, location, vector2);
+        GL.ProgramUniform2f(ID, location, vector2);
     }
 
     public void Upload(string name, Vector2 vector2)
     {
-        GL.ProgramUniform2(ID, GetUniformLocation(name), vector2);
+        GL.ProgramUniform2f(ID, GetUniformLocation(name), vector2);
     }
 
     public static void UploadToProgram(int id, int location, float x)
     {
-        GL.ProgramUniform1(id, location, x);
+        GL.ProgramUniform1f((ProgramHandle)id, location, x);
     }
 
     public void Upload(int location, float x)
     {
-        GL.ProgramUniform1(ID, location, x);
+        GL.ProgramUniform1f(ID, location, x);
     }
 
     public void Upload(string name, float x)
     {
-        GL.ProgramUniform1(ID, GetUniformLocation(name), x);
+        GL.ProgramUniform1f(ID, GetUniformLocation(name), x);
     }
 
     public static void UploadToProgram(int id, int location, int x)
     {
-        GL.ProgramUniform1(id, location, x);
+        GL.ProgramUniform1i((ProgramHandle)id, location, x);
     }
 
     public void Upload(int location, int x)
     {
-        GL.ProgramUniform1(ID, location, x);
+        GL.ProgramUniform1i(ID, location, x);
     }
 
     public void Upload(string name, int x)
     {
-        GL.ProgramUniform1(ID, GetUniformLocation(name), x);
+        GL.ProgramUniform1i(ID, GetUniformLocation(name), x);
     }
 
     public static void UploadToProgram(int id, int location, uint x)
     {
-        GL.ProgramUniform1(id, location, x);
+        GL.ProgramUniform1ui((ProgramHandle)id, location, x);
     }
 
     public void Upload(int location, uint x)
     {
-        GL.ProgramUniform1(ID, location, x);
+        GL.ProgramUniform1ui(ID, location, x);
     }
 
     public void Upload(string name, uint x)
     {
-        GL.ProgramUniform1(ID, GetUniformLocation(name), x);
+        GL.ProgramUniform1ui(ID, GetUniformLocation(name), x);
     }
 
     public static void UploadToProgram(int id, int location, bool x)
     {
-        GL.ProgramUniform1(id, location, x ? 1 : 0);
+        GL.ProgramUniform1i((ProgramHandle)id, location, x ? 1 : 0);
     }
 
     public void Upload(int location, bool x)
     {
-        GL.ProgramUniform1(ID, location, x ? 1 : 0);
+        GL.ProgramUniform1i(ID, location, x ? 1 : 0);
     }
 
     public void Upload(string name, bool x)
     {
-        GL.ProgramUniform1(ID, GetUniformLocation(name), x ? 1 : 0);
+        GL.ProgramUniform1i(ID, GetUniformLocation(name), x ? 1 : 0);
     }
 
     public int GetUniformLocation(string name)

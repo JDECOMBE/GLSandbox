@@ -1,5 +1,6 @@
 using System.Drawing.Drawing2D;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using TextureWrapMode = OpenTK.Graphics.OpenGL.TextureWrapMode;
 
@@ -7,8 +8,8 @@ namespace OpenTKTesting.Rendering;
 
 class DepthRenderPass
 {
-    public int FBO { get; private set; }
-    public int DepthTexture { get; private set; }
+    public FramebufferHandle FBO { get; private set; }
+    public TextureHandle DepthTexture { get; private set; }
 
     public ShaderProgram Program { get; private set; }
 
@@ -19,20 +20,20 @@ class DepthRenderPass
         FBO = GL.GenFramebuffer();
 
         DepthTexture = GL.GenTexture();
-        GL.BindTexture(TextureTarget.Texture2D, DepthTexture);
-        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.DepthComponent, 800, 600, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+        GL.BindTexture(TextureTarget.Texture2d, DepthTexture);
+        GL.TexImage2D(TextureTarget.Texture2d, 0, (int)PixelFormat.DepthComponent, 800, 600, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
         
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, FBO);
         GL.BindFramebuffer(FramebufferTarget.DrawFramebuffer, FBO);
         GL.BindFramebuffer(FramebufferTarget.ReadFramebuffer, FBO);
-        GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, TextureTarget.Texture2D, DepthTexture, 0);
+        GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, TextureTarget.Texture2d, DepthTexture, 0);
         GL.DrawBuffer(DrawBufferMode.None);
         GL.ReadBuffer(ReadBufferMode.None);
-        GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, FramebufferHandle.Zero);
         
 
 
