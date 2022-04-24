@@ -4,111 +4,36 @@
     <projectFile>OpenTKTesting/OpenTKTesting.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/1001_AO.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/1001_albedo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/1001_metallic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/1001_normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/1001_roughness.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/A321SARA.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/A321SARAGears.glb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Bee.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Body1_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Cube.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Cubes.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Dragon25.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/DragonASCII.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/DragonBinary.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/DragonYUP.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Eye1_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Handgun.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/HandgunBinary.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Handgun_obj.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Handgun_obj.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Mouth1_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Sting.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Survival_BackPack_2.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Wolf.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/cube_layout.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/handgun_C.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/handgun_Fire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/handgun_N.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/handgun_S.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/lost_empire-Alpha.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/lost_empire-RGB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/lost_empire-RGBA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/lost_empire.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/lost_empire.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_Body2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_BodyNor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_Eye2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_EyeNor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_Mouth2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0143_00_MouthNor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0768_00_fi_body.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pm0768_00_fi_eye.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/pokemon.dae" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/snorlax.dae" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/snorlax.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/snorlax.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/tamer.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Ani_Fire_A.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Dragon_Bump_Col2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Dragon_Nor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Dragon_Nor_mirror2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Dragon_ground_color.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Fire_A_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Floor_C.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Floor_N.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Floor_S.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Base_Color.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Emissive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Height.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Metallic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Mixed_AO.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Normal_DirectX.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Sting_Roughness.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Wolf_Body.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Wolf_Eyes_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Wolf_Eyes_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Wolf_Fur.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/handgun_C.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/handgun_Fire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/handgun_N.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/handgun_S.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/Game.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Camera.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Cube.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/DepthRenderPass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/IRenderingItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/ParticuleSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/particle_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/particle_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Utils/StringExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="cleaning up + basic test for OSX support">
+      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_frag.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/DepthRenderPass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/DepthRenderPass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/depth_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/mesh_vert.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="GLSL Shader" />
+      </list>
+    </option>
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -127,40 +52,19 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c2dd14f5132a44409f5a3ea28f34a5322200/28/142e2d7d/Utils.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a7aee5c3390a490baab09443fdfd47c6ae00/f1/2b000279/GLFWNative.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b50c899a3f83542f26844ae6e447c49bd7bb661abc2f4565838e5235a52423/Image.LoadPixelData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d46bd8425e11c1765d24f63eb12484e04a92f2dc9d4a2fe3c2e47f35b1d3/Image.Decode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/40/6f2b9c60/TextureType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b70e7642ea1841178943d0ed45da5667390e00/9e/2c1eb692/GL.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d84cd47e2c64c8c97f04231b42c29e34a800/88/5c59c270/Vector4.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a7aee5c3390a490baab09443fdfd47c6ae00/2c/a300f93d/KeyboardState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f72a88ddb1544769ad66fc6f66f95b6f2ac70/72/2df82b53/PixelFormat.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/cf/208c9332/GLFWGraphicsContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04a85421370d4abcb8998579a565acfd445600/25/c4d1a073/GL.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a7aee5c3390a490baab09443fdfd47c6ae00/93/6e97b923/GLFW.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d2ea34777db84c3e93991f97f3d7883f3000/4c/bd10af1a/IGraphicsContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/ab/5a4351f3/EmbeddedTexture.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04a85421370d4abcb8998579a565acfd445600/a1/de0f2d85/Buffer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d84cd47e2c64c8c97f04231b42c29e34a800/4e/8091f8fb/Matrix4.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7a9ad2597224d3d578188917875d83477882e03550c1d9153da781fae14e7bfc/Image.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04a85421370d4abcb8998579a565acfd445600/77/5719696f/FramebufferTarget.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/43/da20bb39/AssimpContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/jeremiahdecombe/DevPerso/GLSandbox/OpenTKTesting/Rendering/SceneRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/59/ac8d142b/GLFWProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92ab78f138b33f28a2cab318b7a7831cd0ace5958fc959c666aa4b67fd2976/Rgb24.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/jeremiahdecombe/DevPerso/GLSandbox/OpenTKTesting/Game/Game.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f72a88ddb1544769ad66fc6f66f95b6f2ac70/72/2df82b53/PixelFormat.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04a85421370d4abcb8998579a565acfd445600/e0/bf5993ba/TextureParameterName.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d84cd47e2c64c8c97f04231b42c29e34a800/d2/d82b5a1a/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/e9/85551a57/GameWindow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f36fce4601e8428098336ee44a35d65257c800/e9/2aba6be3/GraphicsMode.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/b1/93d71447/GameWindowSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57c2d4282221452cad4df86bbd5d6fa0a1fc68/82/ad0b82ea/LayoutKind.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4f8d787c0bafc7f210002da9f4604a1932b800/d1/b22085c4/Image.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/d7/16a2c124/Mesh.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3b9684f72bc2cc435eb694f7cc86eca8c240d2d1cefa1e8697a61f1f2f27f/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/6b/b1f9e380/Material.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/94/1d5c2074/NativeWindowSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a7aee5c3390a490baab09443fdfd47c6ae00/32/f43ef92d/Keys.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/59/f4a01f60/KeyboardKeyEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3679d5494c9cbb4e5b626252aa8afa3b77d45941b72761e7deeef59df61b81d/FileSystemWatcher.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b70e7642ea1841178943d0ed45da5667390e00/a2/6f78724d/ProgramHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/b6/f27a0383/NativeWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7fe79a50e72b83d86bcb87e6e177c55c4e64595e94e8591a17f6ec586ffc9f71/Interop.IOErrors.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04a85421370d4abcb8998579a565acfd445600/55/8d52855f/TextureWrapMode.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -174,9 +78,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="XThreadsFramesViewSplitterKey" value="0.6707317" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.29571983" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.MS SQL Server, MS Azure" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.OpenTKTesting">
@@ -229,6 +133,7 @@
       <workItem from="1646057533987" duration="4771000" />
       <workItem from="1646574529893" duration="6342000" />
       <workItem from="1650661831988" duration="1923000" />
+      <workItem from="1650664780135" duration="12672000" />
     </task>
     <servers />
   </component>
@@ -251,6 +156,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="cleaning up + basic test for OSX support" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning up + basic test for OSX support" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

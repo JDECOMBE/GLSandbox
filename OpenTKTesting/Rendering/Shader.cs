@@ -21,7 +21,12 @@ internal class Shader : IDisposable
 
         string compileInfo = GL.GetShaderInfoLog(ID);
         if (compileInfo != string.Empty)
+        {
+            if (compileInfo.StartsWith("ERROR"))
+                Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(compileInfo);
+            Console.ResetColor();
+        }
     }
 
     public void Dispose()
@@ -48,7 +53,7 @@ class ShaderProgram : IDisposable
             var w = new FileSystemWatcher(Path.GetDirectoryName(s.FilePath))
             {
                 NotifyFilter = NotifyFilters.LastWrite,
-                Filter = Path.GetFileName(s.FilePath)
+                Filter = Path.GetFileName(s.FilePath) ?? string.Empty
             };
             w.Changed += (_, e) =>
             {

@@ -1,4 +1,4 @@
-#version 430 core
+#version 330 core
 
 in vec3 Normal;
 in vec3 FragPos;
@@ -69,8 +69,6 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 
 void main()
 {
-    // ambient
-  	
     // diffuse 
     vec3 norm = normalize(Normal);
     vec3 lightDir = normalize(light.position - FragPos);

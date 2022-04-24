@@ -9,7 +9,7 @@ using OpenTKTesting.Utils;
 
 namespace OpenTKTesting.Game;
 
-public class Game : GameWindow
+public class SceneRendererGame : GameWindow
 {
     #region FPS
 
@@ -19,12 +19,16 @@ public class Game : GameWindow
     #endregion
 
     private Camera _camera;
-    // private ParticuleSystem _particule = new ParticuleSystem();
     private Cube _cube = new Cube();
     private SceneRenderer _sceneRenderer = new SceneRenderer();
     private Vector2? _previousMousePos;
 
-    public Game()
+    public SceneRendererGame(GameWindowSettings settings, NativeWindowSettings nativeWindowSettings)
+        : base(settings, nativeWindowSettings)
+    {
+        
+    }
+    public SceneRendererGame()
         : base(GameWindowSettings.Default, new NativeWindowSettings() { Size = new (800, 600)})
     {
     }
@@ -32,8 +36,6 @@ public class Game : GameWindow
     protected override void OnLoad()
     {
         _camera = new Camera(Vector3.Zero, new Vector3(1), Size);
-        // _particule.Init();
-        // _particule.CenterOfMass = Vector3.Zero;
         _sceneRenderer.Init();
 
         _cube.Init();
@@ -48,7 +50,6 @@ public class Game : GameWindow
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
         _sceneRenderer.Render(_camera);
-        // _particule.Render(_camera);
         _cube.Render(_camera);
         SwapBuffers();
         base.OnRenderFrame(args);
@@ -76,7 +77,6 @@ public class Game : GameWindow
         if (IsKeyPressed(Keys.Escape))
             Close();
         
-        // _particule.Update((float) args.Time);
         _sceneRenderer.Update((float)args.Time);
         _cube.Update((float)args.Time);
         _frameCount++;
@@ -89,16 +89,6 @@ public class Game : GameWindow
             _frameCount = 0;
         }
 
-        // _particule.Mass = IsMouseButtonDown(MouseButton.Right) ? 1 : 0;
-        // if (IsMouseButtonDown(MouseButton.Right))
-        // {
-        //     var rayDir = _camera.GetWorldSpaceRay(MousePosition);
-        //     var camDir = _camera.Direction;
-        //     var dot = Vector3.Dot(camDir, rayDir);
-        //     var dist = Vector3.Dot(_camera.Target - _camera.Position, camDir) / dot;
-        //     _particule.CenterOfMass = _camera.Position + rayDir * dist;
-        // }
-        
         if (IsMouseButtonDown(MouseButton.Left))
         {
             if (_previousMousePos.HasValue)

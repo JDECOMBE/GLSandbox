@@ -1,8 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿using System.Runtime.InteropServices;
+using OpenTK.Windowing.Common;
+using OpenTK.Windowing.Desktop;
 using OpenTKTesting.Game;
 
-Console.WriteLine("Hello, World!");
+var windowsSettings = NativeWindowSettings.Default;
+if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+{
+    windowsSettings.Flags = ContextFlags.ForwardCompatible;
+}
 
-var game = new Game();
+// var game = new ParticleGame(GameWindowSettings.Default, windowsSettings);
+// var game = new SceneRendererGame(GameWindowSettings.Default, windowsSettings);
+var game = new SimpleSpriteGame(GameWindowSettings.Default, windowsSettings);
 game.Run();
