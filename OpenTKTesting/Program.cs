@@ -10,6 +10,8 @@ if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 }
 
 // var game = new ParticleGame(GameWindowSettings.Default, windowsSettings);
-// var game = new SceneRendererGame(GameWindowSettings.Default, windowsSettings);
-var game = new SimpleSpriteGame(GameWindowSettings.Default, windowsSettings);
+//var game = new SceneRendererGame(GameWindowSettings.Default, windowsSettings);
+// var game = new SimpleSpriteGame(GameWindowSettings.Default, windowsSettings);
+// var game = new RayTracingGame();
+var game = new BatchrenderingGame();
 game.Run();

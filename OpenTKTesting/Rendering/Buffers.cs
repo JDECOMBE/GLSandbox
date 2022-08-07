@@ -14,8 +14,8 @@ public class VertexArrayObject
 
     public void SetAttribPointer(int index, int size, int stride, IntPtr offset, bool normalize = false)
     {
-        GL.VertexAttribPointer(index, size, VertexAttribPointerType.Float, normalize, stride, offset);
         GL.EnableVertexAttribArray(index);
+        GL.VertexAttribPointer(index, size, VertexAttribPointerType.Float, normalize, stride, offset);
     }
 
     public void Bind()
@@ -29,9 +29,9 @@ public class VertexArrayObject
     }
 }
 
-public class VertexBufferObject : Buffer<float>
+public class VertexBufferObject<T> : Buffer<T> where T : struct
 {
-    public VertexBufferObject(float[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ArrayBuffer, data.Length, data, usage)
+    public VertexBufferObject(T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ArrayBuffer, data.Length, data, usage)
     {
     }
 }
@@ -70,15 +70,25 @@ public abstract class Buffer<T> where T : struct
 {
     public int ID { get; }
     public BufferTarget Target { get; }
-
+    private int _bufferSize;
+    private BufferUsageHint _usage;
+    
     protected Buffer(BufferTarget target, int bufferSize, T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw)
     {
         Target = target;
+        _usage = usage;
+        _bufferSize = bufferSize;
+        
         ID = GL.GenBuffer();
         Bind();
         GL.BufferData(Target, bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, usage);
     }
 
+    public void UploadData(T[] data) 
+    {
+        Bind();
+        GL.BufferData(Target, _bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, _usage);
+    }
     public virtual void Bind()
     {
         GL.BindBuffer(Target, ID);

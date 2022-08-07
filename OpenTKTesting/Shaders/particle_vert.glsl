@@ -31,7 +31,7 @@ void main()
     vec3 toMass = centerOfMass - particle.Position;
     float dist = max(length(toMass), 0.01);
     
-    vec3 accel = 10.0 * mass / dist * (toMass / dist); 
+    vec3 accel = 10.0 * (mass / dist) * (toMass / dist); 
     particle.Velocity *= mix(1.0, exp(DRAG_COEF * dts), 1.0);
     particle.Position += (dts * particle.Velocity + 0.5 * accel * dts * dts);
     particle.Velocity += accel * dts;

@@ -30,7 +30,7 @@ public class Camera
     public void UpdateSize(Vector2 windowSize)
     {
         WindowSize = windowSize;
-        Projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(103.0f), windowSize.X / windowSize.Y, 0.001f, 1000f);
+        Projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(90.0f), windowSize.X / windowSize.Y, 0.01f, 1000f);
     }
 
     public Vector3 GetWorldSpaceRay(Vector2 mousePos)

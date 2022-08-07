@@ -36,8 +36,8 @@ public class ParticuleSystem : IRenderingItem
     public void Init()
     {
         _program = new ShaderProgram(
-            new Shader(ShaderType.VertexShader, "./Shaders/particle_vert.glsl"),
-            new Shader(ShaderType.FragmentShader, "./Shaders/particle_frag.glsl")
+            new Shader(ShaderType.VertexShader, "../../../Shaders/particle_vert.glsl"),
+            new Shader(ShaderType.FragmentShader, "../../../Shaders/particle_frag.glsl")
         );
 
         var r = new Random();

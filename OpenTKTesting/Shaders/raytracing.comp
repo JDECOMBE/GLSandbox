@@ -1,0 +1,220 @@
+#version 430
+
+layout(local_size_x = 32, local_size_y = 32) in;
+layout(rgba32f, binding = 0) uniform image2D img_output;
+
+
+#define SPHERE_COUNT 4
+#define MAX_BOUNCES 16
+#define NB_PASS 100
+
+vec3 light_dir = vec3(1.0, 1.0, -1.0);
+
+struct Ray {
+    vec3 origin;
+    vec3 direction;
+};
+
+struct Sphere {
+    vec3 center;
+    vec3 color;
+    float radius;
+// 0: Lambertian
+// 1: Metal
+// 2: Dielectric
+    int materialType;
+};
+
+Sphere spheres[SPHERE_COUNT];
+
+struct HitInfo {
+    vec3 normal;
+    vec3 point;
+    Sphere sphere;
+    bool front_face;
+};
+
+
+void init_scene() {
+    spheres[0].color = vec3(0.8, 0.4, 0.3);
+    spheres[0].center = vec3(-2.05, 1.0, 5.0);
+    spheres[0].radius = 1.0;
+    spheres[0].materialType = 2;
+
+    spheres[1].color = vec3(0.7);
+    spheres[1].center = vec3(2.05, 1.0, 5.0);
+    spheres[1].radius = 1.0;
+    spheres[1].materialType = 1;
+
+    spheres[2].radius = 1.0;
+    spheres[2].center = vec3(0.0, 1.0, 5.0);
+    spheres[2].color = vec3(0.8, 0.4, 0.3);
+    spheres[2].materialType = 0;
+
+    spheres[3].radius = 1000.0;
+    spheres[3].center = vec3(0.0, -1000.0, 0.0);
+    spheres[3].color = vec3(0.3, 0.4, 0.8);
+    spheres[3].materialType = 0;
+}
+
+
+float hit_sphere(Ray ray, Sphere item) {
+    vec3 oc = ray.origin - item.center;
+    float a = dot(ray.direction, ray.direction);
+    float half_b = dot(oc, ray.direction);
+    float c = dot(oc, oc) - item.radius * item.radius;
+    float discriminant = half_b * half_b - a * c;
+
+    if (discriminant < 0)
+    return -1.0;
+    float sqrtd = sqrt(discriminant);
+
+    return (-half_b - sqrtd) / a;
+}
+int FK(float k) {
+    return floatBitsToInt(cos(k))^floatBitsToInt(k);
+}
+
+float hash(float a, float b) {
+    int x = FK(a);
+    int y = FK(b);
+    return float((x*x+y)*(y*y-x)+x)/2.14e9;
+}
+
+float rand(vec2 co){
+    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+vec3 randomSpherePoint(float a) {
+    float h = hash(a, a+32.23);
+    return normalize(vec3(rand(vec2(a, h)), rand(vec2(a+h, h*a)), rand(vec2(a+h, h)))) * 2.0 - vec3(1.0);
+}
+
+float reflectance(float cosine, float ref_idx) {
+    float r0 = (1 - ref_idx) / (1 + ref_idx);
+    r0 = r0 * r0;
+    return r0 + (1 - r0) * pow((1 - cosine), 5.);
+}
+
+vec3 intersect(Ray ray, int currentPass) {
+    HitInfo info;
+    vec3 endColor = vec3(1.0);
+    bool loop = true;
+
+    for (int i = 0; i < MAX_BOUNCES; i++) {
+
+        // Bypass the no-recursion / no dynamic for loops policy. Used to limit bounces if not required.
+        if (loop) {
+
+            // Current iteration hit distance.
+            float currentT = 10000.0;
+
+            // Used to know whether any item has been hit in the current bounce context. If none, no need to keep bouncing.
+            bool intersected = false;
+
+
+            for (int i = 0; i < SPHERE_COUNT; i++) {
+
+                float t = hit_sphere(ray, spheres[i]);
+
+                // Closest hit so far
+                if ( t > 0.0 && t < currentT) {
+                    currentT = t;
+
+                    // Continues to bounces
+                    intersected = true;
+
+                    // Update hit infos
+                    Sphere sphere = spheres[i];
+                    info.point = ray.origin + ray.direction * t;
+                    vec3 outwardNormal = normalize((info.point - sphere.center) / sphere.radius);
+                    info.sphere = sphere;
+                    info.front_face = dot(ray.direction, outwardNormal) < 0.0;
+                    info.normal = info.front_face ? outwardNormal : -outwardNormal;
+                }
+            }
+
+            loop = intersected;
+
+            if (loop) {
+                // Scattering
+                
+                // Lambertian
+                if (info.sphere.materialType == 0) {
+                    vec3 seed = info.normal + info.point * endColor * currentPass;
+                    vec3 scatter = info.normal + randomSpherePoint(seed.x * seed.y + seed.z * currentPass);
+                    vec3 absScatter = abs(scatter);
+                    if (absScatter.x < 0.0000001 && absScatter.x < 0.0000001 && absScatter.x < 0.00000001) {
+                        scatter = info.normal;
+                    }
+                    ray.origin = info.point;
+                    ray.direction = normalize(scatter);
+                    endColor = endColor * info.sphere.color;
+                }
+
+                // Metal
+                else if (info.sphere.materialType == 1) {
+                    vec3 seed = info.normal + info.point * endColor * currentPass;
+                    vec3 reflected = reflect(normalize(ray.direction), info.normal);
+                    vec3 scatter = reflected + randomSpherePoint(seed.x * seed.y + seed.z * currentPass) * 0.0;
+                    ray.origin = info.point;
+                    ray.direction = normalize(scatter);
+                    endColor = endColor * info.sphere.color;
+                }
+                
+                // Dielectric
+                else if (info.sphere.materialType == 2) {
+                    vec3 seed = info.normal + info.point * endColor * currentPass;
+
+                    float ir = 1.52;
+                    float refractionRatio = info.front_face ? (1.0 / ir) : ir;
+                    vec3 unitDir = normalize(ray.direction);
+                    float cosTheta = min(dot(-unitDir, info.normal), 1.0);
+                    float sinTheta = sqrt(1.0 - (cosTheta * cosTheta));
+                    
+                    bool cannotRefract = (refractionRatio * sinTheta) > 1.0;
+                    if (cannotRefract || reflectance(cosTheta, refractionRatio) > rand(seed.xy)) {
+                        ray.direction = reflect(unitDir, info.normal);
+                    } else {
+                        ray.direction = refract(unitDir, info.normal, refractionRatio);
+                    }
+                }
+            }
+        }
+    }
+
+    if (!loop) {
+        float t = (normalize(ray.direction).y + 1.0) * 0.25;
+        endColor = (1.0 - t) * vec3(endColor) + t * vec3(0.5, 0.7, 1.0);
+    }
+
+
+
+    return endColor;
+}
+
+
+void main() {
+
+    init_scene();
+
+    vec4 pixel = vec4(0.0, 0.0, 0.0, 1.0);
+    ivec2 imgSize = imageSize(img_output);
+    vec2 pixel_coords = gl_GlobalInvocationID.xy;
+
+
+    float x = (pixel_coords.x / float(imgSize.x)) * 2.0 - 1.0;
+    float y = ((pixel_coords.y / float(imgSize.y)) * 2.0 - 1.0) * -1.0;
+
+    float resolutionRatio = 9.0 / 16.0;
+
+    Ray ray;
+    ray.origin = vec3(0.0, 1.0, 0.0);
+    ray.direction = normalize(vec3(x, y * resolutionRatio, 1.0));
+
+    for (int pass = 0; pass < NB_PASS; pass++)
+    pixel = pixel + vec4(intersect(ray, pass), 1.0);
+
+    pixel = pixel / NB_PASS;
+    imageStore(img_output, ivec2(gl_GlobalInvocationID.xy), pixel);
+}

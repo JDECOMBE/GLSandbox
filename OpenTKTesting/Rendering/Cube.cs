@@ -8,7 +8,7 @@ namespace OpenTKTesting.Rendering;
 public class Cube : IRenderingItem
 {
     private ShaderProgram _program;
-    private VertexBufferObject _vbo;
+    private VertexBufferObject<float> _vbo;
     private VertexArrayObject _vao;
     private ElementBufferObject _ebo;
 
@@ -26,7 +26,7 @@ public class Cube : IRenderingItem
         });
         
         _vao = new VertexArrayObject();
-        _vbo = new VertexBufferObject(new float[]
+        _vbo = new VertexBufferObject<float>(new float[]
         {
             -1, -1, -1,
             -1, 1, -1,

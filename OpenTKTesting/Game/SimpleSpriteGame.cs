@@ -15,7 +15,6 @@ public class SimpleSpriteGame : GameWindow
     private ShaderProgram _program;
     private VertexArrayObject _vao;
     private int _textureId;
-    private int _textureAlphaChannelId;
 
     public SimpleSpriteGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -32,7 +31,7 @@ public class SimpleSpriteGame : GameWindow
 
         _vao = new VertexArrayObject();
 
-        _ = new VertexBufferObject(new float[]
+        _ = new VertexBufferObject<float>(new float[]
         {
             -1, -1, 0, 1,
             1, -1, 1, 1,
@@ -50,8 +49,6 @@ public class SimpleSpriteGame : GameWindow
         OpenGLErrorChecker.CheckError();
 
         _textureId = GenTexture("./Assets/lost_empire-RGB.png");
-        _textureAlphaChannelId = GenTexture("./Assets/lost_empire-Alpha.png");
-        OpenGLErrorChecker.CheckError();
 
     }
 
@@ -60,9 +57,7 @@ public class SimpleSpriteGame : GameWindow
     {
         Title = $"{args.Time}ms";
         _totalTime += args.Time;
-        GL.Enable(EnableCap.Blend);
-        GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-        GL.ClearColor((float)Math.Sin(_totalTime), (float)Math.Cos(_totalTime), 0, 1);
+        GL.ClearColor(0, 0, 0, 1);
         GL.Clear(ClearBufferMask.ColorBufferBit);
         
         _vao.Bind();
@@ -73,12 +68,7 @@ public class SimpleSpriteGame : GameWindow
         GL.BindTexture(TextureTarget.Texture2D, _textureId);
         _program.Upload("tex", 0);
         
-        GL.ActiveTexture(TextureUnit.Texture1);
-        GL.BindTexture(TextureTarget.Texture2D, _textureAlphaChannelId);
-        _program.Upload("alphaChannel", 1);
-
         GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
-
         SwapBuffers();
         base.OnRenderFrame(args);
     }

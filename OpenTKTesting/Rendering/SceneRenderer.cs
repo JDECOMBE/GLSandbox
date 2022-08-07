@@ -69,7 +69,7 @@ public class SceneRenderer : IRenderingItem
         _depthRenderPass.Init();
 
         var assimpContext = new AssimpContext();
-        _scene = assimpContext.ImportFile("./Assets/Dragon25.fbx", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
+        _scene = assimpContext.ImportFile("./Assets/Cerberus_LP.fbx", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
 
         LoadMaterials();
         LoadMeshes();
@@ -81,8 +81,9 @@ public class SceneRenderer : IRenderingItem
 
     public void Render(Camera camera)
     {
-        var lightPos = new Vector3((float) MathHelper.Sin(_currentTime / 2f) * 3f, (float) MathHelper.Cos(_currentTime / 2f) * 3f, 1f);
-        var lightViewProjection = Matrix4.LookAt(lightPos, new Vector3(0, 0f, 0f), Vector3.UnitY) * Matrix4.CreateOrthographicOffCenter(-1f, 1f, -1f, 1f, 0.001f, 1000f);
+        // var lightPos = new Vector3((float) MathHelper.Sin(_currentTime / 2f) * 30f, (float) MathHelper.Cos(_currentTime / 2f) * 30f, 1f);
+        var lightPos = new Vector3(0f, 5f, 3f);
+        var lightViewProjection = Matrix4.LookAt(lightPos, new Vector3(0, 0f, 0f), Vector3.UnitY) * Matrix4.CreateOrthographicOffCenter(-10f, 10f, -10f, 10f, 0.001f, 1000f);
 
         _vao.Bind();
         _depthRenderPass.PreRender();
@@ -260,7 +261,7 @@ public class SceneRenderer : IRenderingItem
             }
         }
 
-        _ = new VertexBufferObject(vertices.ToArray());
+        _ = new VertexBufferObject<float>(vertices.ToArray());
 
         var ind = _scene.Meshes.SelectMany(e => e.GetUnsignedIndices()).ToArray();
         _ = new ElementBufferObject(ind);

@@ -252,6 +252,10 @@ class ShaderProgram : IDisposable
         return GL.GetUniformLocation(ID, name);
     }
 
+    public void DispatchCompute(int numX = 1, int numY = 1, int numZ = 1)
+    {
+        GL.DispatchCompute(numX, numY, numZ);
+    }
 
     public void Dispose()
     {
