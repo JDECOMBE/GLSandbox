@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Assimp;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using OpenTKTesting.Utils;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -22,14 +23,15 @@ public class BatchBillboard : IRenderingItem
     private int _indicesCount = 0;
     
     private float[] _data;
-    private int _instanceCount = 0;
 
     private int _texture1;
 
     
+    public int InstanceCount { get; set; }
+    
     public BatchBillboard(int count, Vector3[] positions, Vector3[] colors, float[] scales, float[] randomValue)
     {
-        _instanceCount = count;
+        InstanceCount = count;
         
         _data = Enumerable.Range(0, count).SelectMany(e =>
         {
@@ -44,7 +46,7 @@ public class BatchBillboard : IRenderingItem
     
     public BatchBillboard(int count, VertexBufferObject<float> instanceVbo)
     {
-        _instanceCount = count;
+        InstanceCount = count;
         _instanceVbo = instanceVbo;
     }
     
@@ -76,7 +78,7 @@ public class BatchBillboard : IRenderingItem
             new Shader(ShaderType.VertexShader, "../../../Shaders/batch_billboard_vert.glsl"),
             new Shader(ShaderType.FragmentShader, "../../../Shaders/batch_billboard_frag.glsl")
         });
-        
+
         var vertices = new float[]
         {
             // Pos                                // Sampler    // Texture Coords  
@@ -108,17 +110,19 @@ public class BatchBillboard : IRenderingItem
             9, 10, 11,
         };
         
-        
+
         _vao = new VertexArrayObject();
         var vbo = new VertexBufferObject<float>(vertices);
+
         _instanceVbo ??= new VertexBufferObject<float>(_data);
         _indicesCount = indices.Length;
         _ = new ElementBufferObject(indices);
         vbo.Bind();
+
         _vao.SetAttribPointer(0, 3, 6 * sizeof(float), IntPtr.Zero);
         _vao.SetAttribPointer(1, 1, 6 * sizeof(float), IntPtr.Zero + 3 * sizeof(float));
         _vao.SetAttribPointer(2, 2, 6 * sizeof(float), IntPtr.Zero + 4 * sizeof(float));
-        
+
         
         _instanceVbo.Bind();
         _vao.SetAttribPointer(3, 3, sizeof(float) * 8, IntPtr.Zero);
@@ -131,7 +135,7 @@ public class BatchBillboard : IRenderingItem
         GL.VertexAttribDivisor(6, 1);
 
 
-        _texture1 = GenTexture(@"D:\Code\3dModels\tree.png");
+        _texture1 = GenTexture(@"./Assets/tree.png");
     }
 
     
@@ -147,7 +151,7 @@ public class BatchBillboard : IRenderingItem
         GL.BindTexture(TextureTarget.Texture2D, _texture1);
         _program.Upload("texture1", 0);
         
-        GL.DrawElementsInstanced(PrimitiveType.Triangles, _indicesCount, DrawElementsType.UnsignedInt, IntPtr.Zero, _instanceCount);
+        GL.DrawElementsInstanced(PrimitiveType.Triangles, _indicesCount, DrawElementsType.UnsignedInt, IntPtr.Zero, InstanceCount);
     }
 
     public void Update(float dts) { }

@@ -18,11 +18,6 @@ out vec3 Color;
 
 void main()
 {
-    float d = (distance(offset, viewPosition) / 1f) * 1.0 + random * 0.1;
-    if (d < 1) {
-        gl_Position = vec4(vec3(10), 0); // better find another way to discard geometry.
-        return;
-    }
     UV = uv;
     Color = color;
     vec3 positionScaled = position * scale * vec3(0.27);
