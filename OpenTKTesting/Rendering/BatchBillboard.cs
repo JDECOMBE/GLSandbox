@@ -125,14 +125,16 @@ public class BatchBillboard : IRenderingItem
 
         
         _instanceVbo.Bind();
-        _vao.SetAttribPointer(3, 3, sizeof(float) * 8, IntPtr.Zero);
-        _vao.SetAttribPointer(4, 3, sizeof(float) * 8, IntPtr.Zero + 3 * sizeof(float));
-        _vao.SetAttribPointer(5, 1, sizeof(float) * 8, IntPtr.Zero + 6 * sizeof(float));
-        _vao.SetAttribPointer(6, 1, sizeof(float) * 8, IntPtr.Zero + 7 * sizeof(float));
+        _vao.SetAttribPointer(3, 3, sizeof(float) * 9, IntPtr.Zero);
+        _vao.SetAttribPointer(4, 3, sizeof(float) * 9, IntPtr.Zero + 3 * sizeof(float));
+        _vao.SetAttribPointer(5, 1, sizeof(float) * 9, IntPtr.Zero + 6 * sizeof(float));
+        _vao.SetAttribPointer(6, 1, sizeof(float) * 9, IntPtr.Zero + 7 * sizeof(float));
+        _vao.SetAttribPointer(7, 1, sizeof(float) * 9, IntPtr.Zero + 8 * sizeof(float));
         GL.VertexAttribDivisor(3, 1);
         GL.VertexAttribDivisor(4, 1);
         GL.VertexAttribDivisor(5, 1);
         GL.VertexAttribDivisor(6, 1);
+        GL.VertexAttribDivisor(7, 1);
 
 
         _texture1 = GenTexture(@"./Assets/tree.png");

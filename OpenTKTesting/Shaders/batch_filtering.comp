@@ -9,6 +9,7 @@ struct InputStruct {
     float colorZ;
     float scale;
     float randomValue;
+    float ditheringFactor;
 };
 
 struct StatsStruct {
@@ -36,7 +37,7 @@ layout (std430, binding=5) writeonly buffer stats_data {
 };
 
 layout (location=1) uniform vec3 viewPosition;
-
+layout (location=2) uniform float viewDistance;
 
 
 void main() {
@@ -45,13 +46,14 @@ void main() {
     vec3 offset = vec3(inp.posX, inp.posY, inp.posZ);
     float random = inp.randomValue;
     
-    float dMesh = (distance(offset, viewPosition) / 3f) * 0.9 + random * 0.1;
+    float dMesh = (distance(offset, viewPosition) / viewDistance) * 0.9 + random * 0.1;
     if (dMesh < 1) {
         int mIndex = atomicAdd(totalMeshes, 1);
+        data[index].ditheringFactor = smoothstep(0.9, 1f, dMesh) / 2f;
         meshes[mIndex] = data[index];
     }
 
-    float dBillboard = (distance(offset, viewPosition) / 3f) * 1.0 + random * 0.1;
+    float dBillboard = (distance(offset, viewPosition) / viewDistance) * 1.0 + random * 0.1;
     if (dBillboard > 1) {
         int bIndex = atomicAdd(totalBillboards, 1);
         billboards[bIndex] = data[index];

@@ -25,6 +25,7 @@ public class BatchrenderingGame : GameWindow
     private BatchBillboard _billboard;
 
     private ShaderProgram _computeProgram;
+    private float _viewDistance = 3f;
     private ShaderStorageBufferObject _ssbo;
     private ShaderStorageBufferObject _meshesData;
     private ShaderStorageBufferObject _billboardData;
@@ -64,7 +65,7 @@ public class BatchrenderingGame : GameWindow
             {
                 positions[e].X, positions[e].Y, positions[e].Z,
                 colors[e].X, colors[e].Y, colors[e].Z,
-                scales[e], randomValue[e]
+                scales[e], randomValue[e], 0
             };
         }).ToArray();
     }
@@ -86,7 +87,7 @@ public class BatchrenderingGame : GameWindow
         _ssbo.SetData(data);
 
         // Output of compute shader -> per instance data used as VBO
-        var blankData = Enumerable.Range(0, sizeof(float) * 8 * nbOfInstances).Select(e => 0f).ToArray();
+        var blankData = Enumerable.Range(0, sizeof(float) * 9 * nbOfInstances).Select(e => 0f).ToArray();
         _meshesData = new ShaderStorageBufferObject();
         _meshesData.SetData(blankData);
         
@@ -105,7 +106,7 @@ public class BatchrenderingGame : GameWindow
 
         _billboard.Init();
 
-        _mesh = new BatchMesh(@"./Assets/tree.gltf", nbOfInstances, new VertexBufferObject<float>(_meshesData.ID));
+        _mesh = new BatchMesh(@"./Assets/tree2.gltf", nbOfInstances, new VertexBufferObject<float>(_meshesData.ID));
         _mesh.Init();
 
 
@@ -125,6 +126,7 @@ public class BatchrenderingGame : GameWindow
         GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 4, _meshesData.ID);
         GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 5, _statsData.ID);
         GL.Uniform3(1, _camera.Position.X, _camera.Position.Y, _camera.Position.Z);
+        GL.Uniform1(2, _viewDistance);
 
         _computeProgram.DispatchCompute(10000);
         GL.MemoryBarrier(MemoryBarrierFlags.AllBarrierBits);
@@ -201,6 +203,11 @@ public class BatchrenderingGame : GameWindow
             _camera.Position += _camera.Direction * (float) args.Time * 2f;
         if (IsKeyDown(Keys.S))
             _camera.Position -= _camera.Direction * (float) args.Time * 2f;
+
+        if (IsKeyDown(Keys.LeftShift))
+            _viewDistance += 1f * (float) args.Time;
+        else if (IsKeyDown(Keys.LeftControl))
+            _viewDistance = Math.Max(0, _viewDistance - 1f * (float) args.Time);
         base.OnUpdateFrame(args);
     }
 }

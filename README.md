@@ -12,5 +12,19 @@ Meant to try out batch rendering with impostors in distance, and real mesh for c
 
 Not everything is optimized and code isn't clean, as I made this project in a 3-4h, this is just a PoC that I may improve in the future.
 
+### Controls:
+- W/Z: Move forward.
+- S: Move backward.
+- Left Click Drag: Orbit around origin.
+- Left Shift: Increase view distance.
+- Left Control: Decrease view distance.
+
+### Screenshot:
+
 ![BatchRenderingGame image](./doc/BatchRenderingGame.png)
 
+### Notes:
+
+Even though the [tree model](./OpenTKTesting/Assets/tree2.gltf) looks low poly, each face has been subdivided several times in Blender to increase its rendering time. In total the mesh counts 16320 vertices and 32502 triangles (data from Blender's statistics).
+
+![Mesh in Blender](./doc/BatchRenderingTreeModel.png)

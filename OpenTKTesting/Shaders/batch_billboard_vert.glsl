@@ -8,6 +8,7 @@ layout (location = 3) in vec3 offset;
 layout (location = 4) in vec3 color;
 layout (location = 5) in float scale;
 layout (location = 6) in float random;
+layout (location = 7) in float ditheringFactor;
 
 uniform mat4 viewProjection;
 uniform vec3 viewPosition;

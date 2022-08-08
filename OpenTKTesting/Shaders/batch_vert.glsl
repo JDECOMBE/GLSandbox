@@ -7,6 +7,7 @@ layout (location = 2) in vec3 offset;
 layout (location = 3) in vec3 color;
 layout (location = 4) in float scale;
 layout (location = 5) in float random;
+layout (location = 6) in float ditheringFactor;
 
 uniform mat4 viewProjection;
 uniform vec3 viewPosition;
@@ -16,9 +17,7 @@ out float DitheringFactor;
 
 void main()
 {
-    float d = (distance(offset, viewPosition) / 3f) * 0.9 + random * 0.1;
-    DitheringFactor = smoothstep(0.9, 1, d) / 2;
-    
+    DitheringFactor = ditheringFactor;
     
     vec3 positionScaled = position * scale;
     vec3 model = positionScaled + offset;
