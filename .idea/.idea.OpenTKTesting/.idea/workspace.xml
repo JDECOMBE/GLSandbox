@@ -4,17 +4,9 @@
     <projectFile>OpenTKTesting/OpenTKTesting.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="GPU RTWE + Part of BatchRendering w/ imposter optim">
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_filtering.comp" afterDir="false" />
+    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="Using CS to filter billboards / meshes">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +147,7 @@
       <workItem from="1655316529723" duration="65000" />
       <workItem from="1655316614024" duration="19675000" />
       <workItem from="1659886940716" duration="1040000" />
-      <workItem from="1659888018718" duration="33715000" />
+      <workItem from="1659888018718" duration="34350000" />
     </task>
     <task id="LOCAL-00001" summary="GPU RTWE + Part of BatchRendering w/ imposter optim">
       <created>1659908911941</created>
@@ -164,7 +156,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659908911941</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Using CS to filter billboards / meshes">
+      <created>1659922689760</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659922689760</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Using CS to filter billboards / meshes">
+      <created>1659922766890</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659922766890</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +194,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="cleaning up + basic test for OSX support" />
     <MESSAGE value="GPU RTWE + Part of BatchRendering w/ imposter optim" />
-    <option name="LAST_COMMIT_MESSAGE" value="GPU RTWE + Part of BatchRendering w/ imposter optim" />
+    <MESSAGE value="Us" />
+    <MESSAGE value="Using CS to filter billboards / meshes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Using CS to filter billboards / meshes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
