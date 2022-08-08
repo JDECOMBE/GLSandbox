@@ -16,12 +16,7 @@ out float DitheringFactor;
 
 void main()
 {
-    float d = (distance(offset, viewPosition) / 1f) * 0.9 + random * 0.1;
-    if (d > 1) {
-        gl_Position = vec4(1, 1, 1, 0); // better find another way to discard geometry.
-        return;
-    }
-    
+    float d = (distance(offset, viewPosition) / 3f) * 0.9 + random * 0.1;
     DitheringFactor = smoothstep(0.9, 1, d) / 2;
     
     

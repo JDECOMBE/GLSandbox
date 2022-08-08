@@ -1,4 +1,5 @@
 using OpenTK.Graphics.OpenGL4;
+using Buffer = System.Buffer;
 
 namespace OpenTKTesting.Rendering;
 
@@ -31,6 +32,10 @@ public class VertexArrayObject
 
 public class VertexBufferObject<T> : Buffer<T> where T : struct
 {
+    public VertexBufferObject(int id) : base(BufferTarget.ArrayBuffer, id)
+    {
+        
+    }
     public VertexBufferObject(T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ArrayBuffer, data.Length, data, usage)
     {
     }
@@ -54,12 +59,24 @@ public class ShaderStorageBufferObject
         Console.WriteLine($"SSBO: {ID}");
     }
 
-    public void BindBuffer()
+    public void BindBuffer(int index = 0)
     {
         GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
-        GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 0, ID);
+        GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, index, ID);
     }
 
+    public void SetData(float[] data)
+    {
+        GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
+        GL.BufferData(BufferTarget.ShaderStorageBuffer, sizeof(float) * data.Length, data, BufferUsageHint.DynamicDraw);
+    }
+    
+    public void SetData(int[] data)
+    {
+        GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
+        GL.BufferData(BufferTarget.ShaderStorageBuffer, sizeof(int) * data.Length, data, BufferUsageHint.DynamicDraw);
+    }
+    
     public void ImmutableAllocation<T>(int size, T[] data, BufferStorageFlags bufferStorageFlags) where T : struct
     {
         GL.NamedBufferStorage(ID, size, data, bufferStorageFlags);
@@ -70,25 +87,23 @@ public abstract class Buffer<T> where T : struct
 {
     public int ID { get; }
     public BufferTarget Target { get; }
-    private int _bufferSize;
-    private BufferUsageHint _usage;
-    
-    protected Buffer(BufferTarget target, int bufferSize, T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw)
+
+    protected Buffer(BufferTarget target, int id)
     {
         Target = target;
-        _usage = usage;
-        _bufferSize = bufferSize;
+        ID = id;
+        Bind();
+    }
+
+protected Buffer(BufferTarget target, int bufferSize, T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw)
+    {
+        Target = target;
         
         ID = GL.GenBuffer();
         Bind();
         GL.BufferData(Target, bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, usage);
     }
 
-    public void UploadData(T[] data) 
-    {
-        Bind();
-        GL.BufferData(Target, _bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, _usage);
-    }
     public virtual void Bind()
     {
         GL.BindBuffer(Target, ID);

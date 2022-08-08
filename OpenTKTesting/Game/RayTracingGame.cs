@@ -96,7 +96,6 @@ public class RayTracingGame : GameWindow
         _computeProgram.Use();
         _computeProgram.DispatchCompute(WIDTH / 32 + 1, HEIGHT / 32 + 1);
         GL.MemoryBarrier(MemoryBarrierFlags.ShaderImageAccessBarrierBit);
-        
         GL.ClearColor(1, 0, 0, 1);
         GL.Clear(ClearBufferMask.ColorBufferBit);
         

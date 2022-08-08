@@ -20,20 +20,21 @@ public class BatchMesh : IRenderingItem
     
     private string _filename = string.Empty;
     private float[] _data;
-    private int _instanceCount = 0;
-    private readonly Vector3[] _positions;
-    private readonly Vector3[] _colors;
-    private readonly float[] _scales;
-    private readonly float[] _randomValue;
 
+    public int InstanceCount { get; set; }
+
+
+    public BatchMesh(string filename, int count, Buffer<float> instanceVbo)
+    {
+        _filename = filename;
+        InstanceCount = count;
+        _instanceVbo = instanceVbo as VertexBufferObject<float>;
+    }
+    
     public BatchMesh(string fileName, int count, Vector3[] positions, Vector3[] colors, float[] scales, float[] randomValue)
     {
         _filename = fileName;
-        _instanceCount = count;
-        _positions = positions;
-        _colors = colors;
-        _scales = scales;
-        _randomValue = randomValue;
+        InstanceCount = count;
 
         _data = Enumerable.Range(0, count).SelectMany(e =>
         {
@@ -63,7 +64,7 @@ public class BatchMesh : IRenderingItem
         _vao = new VertexArrayObject();
         var vbo = new VertexBufferObject<float>(scene.Meshes[0].Vertices.SelectMany((v => new float[] {v.X, v.Y, v.Z})).ToArray());
         var normalVbo = new VertexBufferObject<float>(scene.Meshes[0].Normals.SelectMany(v => new float[] {v.X, v.Y, v.Z}).ToArray());
-        _instanceVbo = new VertexBufferObject<float>(_data);
+        _instanceVbo ??= new VertexBufferObject<float>(_data);
         var indices = scene.Meshes[0].GetUnsignedIndices();
         _indicesCount = indices.Length;
         _ebo = new ElementBufferObject(indices);
@@ -91,7 +92,7 @@ public class BatchMesh : IRenderingItem
         _program.Upload("viewProjection", camera.ViewProjection);
         _program.Upload("viewPosition", camera.Position);
         _program.Upload("windowSize", camera.WindowSize);
-        GL.DrawElementsInstanced(PrimitiveType.Triangles, _indicesCount, DrawElementsType.UnsignedInt, IntPtr.Zero, _instanceCount);
+        GL.DrawElementsInstanced(PrimitiveType.Triangles, _indicesCount, DrawElementsType.UnsignedInt, IntPtr.Zero, InstanceCount);
     }
 
     public void Update(float dts)

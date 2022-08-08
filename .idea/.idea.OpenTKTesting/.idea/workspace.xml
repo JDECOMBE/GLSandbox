@@ -4,83 +4,17 @@
     <projectFile>OpenTKTesting/OpenTKTesting.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Cerberus.tbscene" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/Cerberus_LP.FBX" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/sponza.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/sponza.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Cerberus_A.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Cerberus_M.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Cerberus_N.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/Cerberus_R.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/background.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/background_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/chain_texture.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/chain_texture_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/lion.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/lion2_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/lion_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/spnza_bricks_a_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/spnza_bricks_a_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_arch_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_arch_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_ceiling_a_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_ceiling_a_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_a_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_a_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_b_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_b_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_c_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_column_c_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_curtain_blue_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_curtain_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_curtain_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_curtain_green_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_details_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_details_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_fabric_blue_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_fabric_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_fabric_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_fabric_green_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_flagpole_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_flagpole_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_floor_a_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_floor_a_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_roof_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_roof_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_thorn_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/sponza_thorn_diff.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_dif.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_hanging.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_hanging_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_plant.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_round.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/textures/vase_round_ddn.tga" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Mesh.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Plane.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/raytracing.comp" afterDir="false" />
+    <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="GPU RTWE + Part of BatchRendering w/ imposter optim">
+      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_filtering.comp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Buffers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Camera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Cube.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Cube.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/ParticuleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/ParticuleSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/Shader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/basic_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/particle_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/particle_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/sprite_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,8 +155,16 @@
       <workItem from="1655316529723" duration="65000" />
       <workItem from="1655316614024" duration="19675000" />
       <workItem from="1659886940716" duration="1040000" />
-      <workItem from="1659888018718" duration="20466000" />
+      <workItem from="1659888018718" duration="33715000" />
     </task>
+    <task id="LOCAL-00001" summary="GPU RTWE + Part of BatchRendering w/ imposter optim">
+      <created>1659908911941</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659908911941</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +187,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="cleaning up + basic test for OSX support" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up + basic test for OSX support" />
+    <MESSAGE value="GPU RTWE + Part of BatchRendering w/ imposter optim" />
+    <option name="LAST_COMMIT_MESSAGE" value="GPU RTWE + Part of BatchRendering w/ imposter optim" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
