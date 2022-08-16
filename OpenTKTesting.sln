@@ -6,11 +6,23 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		BatchRendering|Any CPU = BatchRendering|Any CPU
+		RayTracing|Any CPU = RayTracing|Any CPU
+		SceneRenderer|Any CPU = SceneRenderer|Any CPU
+		ParticleSystem|Any CPU = ParticleSystem|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D523008C-CF28-4289-B088-E0BC6D159236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D523008C-CF28-4289-B088-E0BC6D159236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D523008C-CF28-4289-B088-E0BC6D159236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D523008C-CF28-4289-B088-E0BC6D159236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.BatchRendering|Any CPU.ActiveCfg = BatchRendering|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.BatchRendering|Any CPU.Build.0 = BatchRendering|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.RayTracing|Any CPU.ActiveCfg = RayTracing|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.RayTracing|Any CPU.Build.0 = RayTracing|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.SceneRenderer|Any CPU.ActiveCfg = SceneRenderer|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.SceneRenderer|Any CPU.Build.0 = SceneRenderer|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.ParticleSystem|Any CPU.ActiveCfg = ParticleSystem|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.ParticleSystem|Any CPU.Build.0 = ParticleSystem|Any CPU
 	EndGlobalSection
 EndGlobal

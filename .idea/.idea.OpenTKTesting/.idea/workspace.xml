@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd9e0b7c-764a-45bc-b017-5b7aee1813a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/tree2.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OpenTKTesting/Assets/tree2.gltf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/SceneRenderingGame.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OpenTKTesting/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/BatchRenderingGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/BatchRenderingGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/ParticleGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/RayTracingGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SceneRendererGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Game/SimpleSpriteGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/OpenTKTesting.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchBillboard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/BatchMesh.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_billboard_vert.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_filtering.comp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_filtering.comp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_frag.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/batch_vert.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenTKTesting/Shaders/raytracing.comp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenTKTesting/Shaders/raytracing.comp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/BatchRenderingGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/doc/BatchRenderingGame.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +73,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/e9/85551a57/GameWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/b1/93d71447/GameWindowSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f36fce4601e8428098336ee44a35d65257c800/e9/2aba6be3/GraphicsMode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/OpenTKTesting/Game/BatchRenderingGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/57c2d4282221452cad4df86bbd5d6fa0a1fc68/82/ad0b82ea/LayoutKind.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f2103c576aef635626cde2a8c1caee4f5b23ca724d7d5f17e13aeb1e04cad/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4f8d787c0bafc7f210002da9f4604a1932b800/d1/b22085c4/Image.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/d7/16a2c124/Mesh.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3b9684f72bc2cc435eb694f7cc86eca8c240d2d1cefa1e8697a61f1f2f27f/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/8a/52cc9b6a/PostProcessPreset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/OpenTKTesting/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce936998cfb2467c8902046cf55148fd31200/6b/b1f9e380/Material.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4c466bf085d458098e34ca2a0a3cc46b600/94/1d5c2074/NativeWindowSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a7aee5c3390a490baab09443fdfd47c6ae00/32/f43ef92d/Keys.cs" root0="SKIP_HIGHLIGHTING" />
@@ -158,6 +160,8 @@
       <workItem from="1659886940716" duration="1040000" />
       <workItem from="1659888018718" duration="35693000" />
       <workItem from="1659975919035" duration="1562000" />
+      <workItem from="1660147701132" duration="2563000" />
+      <workItem from="1660661866834" duration="1932000" />
     </task>
     <task id="LOCAL-00001" summary="GPU RTWE + Part of BatchRendering w/ imposter optim">
       <created>1659908911941</created>
@@ -232,23 +236,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="README update" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/OpenTKTesting/Rendering/SceneRenderer.cs</url>
-          <line>253</line>
-          <properties documentPath="D:\Code\CSharp\GLSandbox\OpenTKTesting\Rendering\SceneRenderer.cs" initialLine="253" containingFunctionPresentation="method 'LoadMeshes'">
-            <startOffsets>
-              <option value="9413" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9435" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#System.IO.FileSystemEventArgs" memberName="_changeType" />

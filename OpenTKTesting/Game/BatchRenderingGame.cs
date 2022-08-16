@@ -35,7 +35,7 @@ public class BatchrenderingGame : GameWindow
         : base(settings, nativeWindowSettings) { }
 
     public BatchrenderingGame()
-        : base(GameWindowSettings.Default, new NativeWindowSettings() {Size = new(800, 600)}) { }
+        : base(GameWindowSettings.Default, new NativeWindowSettings() {Size = new(800, 600), NumberOfSamples = 16}) { }
 
     private (Vector3[], Vector3[], float[], float[]) GenerateInstances(int count)
     {
@@ -179,7 +179,7 @@ public class BatchrenderingGame : GameWindow
 
         if (_time > 1)
         {
-            Title = $"FPS: {_frameCount / _time:F2}";
+            Title = $"FPS: {_frameCount / _time:F2} - {(_time / _frameCount):F4}ms";
             _time = 0;
             _frameCount = 0;
         }

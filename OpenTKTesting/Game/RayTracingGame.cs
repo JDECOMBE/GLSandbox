@@ -2,6 +2,7 @@ using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 using OpenTKTesting.Rendering;
 using OpenTKTesting.Utils;
 
@@ -15,16 +16,23 @@ public class RayTracingGame : GameWindow
     private ShaderProgram _quadTextureProgram;
     private VertexArrayObject _vao;
     
-    private const int WIDTH = 1920;
-    private const int HEIGHT = 1080;
-        
+    private int _width = 1920;
+    private int _height = 1080;
+
+    #region FPS
+
+    private int _frameCount = 0;
+    private double _time = 0;
+
+    #endregion
 
     public RayTracingGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
-        
+        _width = nativeWindowSettings.Size.X;
+        _height = nativeWindowSettings.Size.Y;
     }
 
-    public RayTracingGame() : base(GameWindowSettings.Default, new NativeWindowSettings { Size = new(WIDTH, HEIGHT) })
+    public RayTracingGame() : base(GameWindowSettings.Default, new NativeWindowSettings { Size = new(1920, 1080) })
     {
         
     }
@@ -80,21 +88,29 @@ public class RayTracingGame : GameWindow
 
         InitQuad();
         
-        _renderTextureId = GenTexture(WIDTH, HEIGHT);
+        _renderTextureId = GenTexture(_width, _height);
         GL.BindImageTexture(0, _renderTextureId, 0, false, 0, TextureAccess.WriteOnly, SizedInternalFormat.Rgba32f);
 
         _computeProgram = new ShaderProgram(new Shader(ShaderType.ComputeShader, "../../../Shaders/raytracing.comp"));
     }
 
+    
     protected override void OnRenderFrame(FrameEventArgs args)
     {
-        Title = $"{args.Time}ms";
-        
+        _frameCount++;
+        _time += args.Time;
+
+        if (_time > 1)
+        {
+            Title = $"FPS: {_frameCount / _time:F2} - {(_time / _frameCount):F4}ms";
+            _time = 0;
+            _frameCount = 0;
+        }       
         GL.ActiveTexture(TextureUnit.Texture0);
 
         GL.BindImageTexture(0, _renderTextureId, 0, false, 0, TextureAccess.WriteOnly, SizedInternalFormat.Rgba32f);
         _computeProgram.Use();
-        _computeProgram.DispatchCompute(WIDTH / 32 + 1, HEIGHT / 32 + 1);
+        _computeProgram.DispatchCompute(_width / 32 + 1, _height / 32 + 1);
         GL.MemoryBarrier(MemoryBarrierFlags.ShaderImageAccessBarrierBit);
         GL.ClearColor(1, 0, 0, 1);
         GL.Clear(ClearBufferMask.ColorBufferBit);
@@ -114,9 +130,11 @@ public class RayTracingGame : GameWindow
 
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
+        if (IsKeyPressed(Keys.Escape))
+            Close();
+        
         base.OnUpdateFrame(args);
     }
-
 
     private int GenTexture(int width, int height)
     {
@@ -131,4 +149,16 @@ public class RayTracingGame : GameWindow
         return id;
     }
 
+    protected override void OnResize(ResizeEventArgs e)
+    {
+        if (e.Width != 0 && e.Height != 0)
+        {
+            GL.Viewport(0, 0, e.Width, e.Height);
+            _renderTextureId = GenTexture(e.Width, e.Height);
+            _width = e.Width;
+            _height = e.Height;
+        }
+
+        base.OnResize(e);
+    }
 }

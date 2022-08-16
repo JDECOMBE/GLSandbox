@@ -69,11 +69,11 @@ public class SceneRenderer : IRenderingItem
         _depthRenderPass.Init();
 
         var assimpContext = new AssimpContext();
-        _scene = assimpContext.ImportFile("./Assets/Cerberus_LP.fbx", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
+        _scene = assimpContext.ImportFile("./Assets/Dragon25.fbx", PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
 
         LoadMaterials();
         LoadMeshes();
-        ParseSceneArchitecture(_scene.RootNode, Matrix4.Identity);
+        ParseSceneArchitecture(_scene.RootNode, Matrix4.CreateRotationZ((float)Math.PI));
 
         GL.Enable(EnableCap.DepthTest);
         GL.DepthFunc(DepthFunction.Less);

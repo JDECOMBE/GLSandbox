@@ -2,10 +2,11 @@ using Assimp;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 using OpenTKTesting.Rendering;
 using OpenTKTesting.Utils;
-using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using Image = SixLabors.ImageSharp.Image;
 using TextureWrapMode = OpenTK.Graphics.OpenGL4.TextureWrapMode;
 
 namespace OpenTKTesting.Game;
@@ -19,7 +20,7 @@ public class SimpleSpriteGame : GameWindow
     public SimpleSpriteGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
     }
-
+    
     protected override void OnLoad()
     {
         base.OnLoad();
@@ -71,6 +72,14 @@ public class SimpleSpriteGame : GameWindow
         GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
         SwapBuffers();
         base.OnRenderFrame(args);
+    }
+
+    protected override void OnUpdateFrame(FrameEventArgs args)
+    {
+        if (IsKeyPressed(Keys.Escape))
+            Close();
+        
+        base.OnUpdateFrame(args);
     }
 
     protected override void OnResize(ResizeEventArgs e)

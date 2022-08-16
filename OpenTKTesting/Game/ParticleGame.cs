@@ -82,7 +82,7 @@ public class ParticleGame : GameWindow
 
         if (_time > 1)
         {
-            Title = $"FPS: {_frameCount / _time:F2}";
+            Title = $"FPS: {_frameCount / _time:F2} - {(_time / _frameCount):F4}ms";
             _time = 0;
             _frameCount = 0;
         }
