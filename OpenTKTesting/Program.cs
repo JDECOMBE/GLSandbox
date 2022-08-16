@@ -9,8 +9,7 @@ var windowsSettings = NativeWindowSettings.Default;
 #if DEBUG
 windowsSettings.Size = new Vector2i(1920, 1080);
 #else
-windowsSettings.Size = new Vector2i(1920, 1080);
-// windowsSettings.WindowState = WindowState.Fullscreen;
+windowsSettings.WindowState = WindowState.Fullscreen;
 #endif
 
 if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

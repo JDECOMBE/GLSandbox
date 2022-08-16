@@ -1,8 +1,10 @@
 # GLSandbox
 
-This repository is used to try out stuff using OpenGL..
+This repository is used to try out stuff using OpenGL.
 
-You can switch between projects in the Program.cs file. Each project is referred as a "Game".
+You can switch between projects using build configurations. Each project use a specific build configuration specified in the project description below. They are by default built with optimizations.
+
+Use `ESC` at any time to close the window.
 
 ## BatchRenderingGame
 
