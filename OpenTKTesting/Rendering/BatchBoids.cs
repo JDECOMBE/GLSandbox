@@ -7,42 +7,41 @@ using PrimitiveType = OpenTK.Graphics.OpenGL4.PrimitiveType;
 
 namespace OpenTKTesting.Rendering;
 
-public class BatchMesh : IRenderingItem
+public class BatchBoids : IRenderingItem
 {
 
     private ShaderProgram _program;
     private VertexArrayObject _vao;
-    private VertexBufferObject<float> _instanceVbo;
+    private ShaderStorageBufferObject _dataBuffer;
     private ElementBufferObject _ebo;
     private int _indicesCount = 0;
 
-    public VertexBufferObject<float> InstanceVBO => _instanceVbo;
-    
     private string _filename = string.Empty;
     private float[] _data;
 
     public int InstanceCount { get; set; }
+    public bool Pause { get; set; }
 
-
-    public BatchMesh(string filename, int count, Buffer<float> instanceVbo)
+    public BatchBoids(string filename, int count, ShaderStorageBufferObject dataBuffer)
     {
         _filename = filename;
         InstanceCount = count;
-        _instanceVbo = instanceVbo as VertexBufferObject<float>;
+        _dataBuffer = dataBuffer;
     }
     
-    public BatchMesh(string fileName, int count, Vector3[] positions, Vector3[] colors, float[] scales, float[] randomValue)
+    public BatchBoids(string fileName, int count, Vector3[] positions, Vector3[] colors, Vector3[] velocity, Vector3[] acceleration)
     {
         _filename = fileName;
         InstanceCount = count;
 
         _data = Enumerable.Range(0, count).SelectMany(e =>
         {
-            return new float[]
+            return new[]
             {
                 positions[e].X, positions[e].Y, positions[e].Z,
                 colors[e].X, colors[e].Y, colors[e].Z,
-                scales[e], randomValue[e]
+                velocity[e].X, velocity[e].Y, velocity[e].Z,
+                acceleration[e].X, acceleration[e].Y, acceleration[e].Z,
             };
         }).ToArray();
     }
@@ -51,8 +50,8 @@ public class BatchMesh : IRenderingItem
     {
         _program = new ShaderProgram(new[]
         {
-            new Shader(ShaderType.VertexShader, "../../../Shaders/batch_vert.glsl"),
-            new Shader(ShaderType.FragmentShader, "../../../Shaders/batch_frag.glsl")
+            new Shader(ShaderType.VertexShader, "../../../Shaders/boids_vert.glsl"),
+            new Shader(ShaderType.FragmentShader, "../../../Shaders/boids_frag.glsl")
         });
 
         
@@ -64,7 +63,13 @@ public class BatchMesh : IRenderingItem
         _vao = new VertexArrayObject();
         var vbo = new VertexBufferObject<float>(scene.Meshes[0].Vertices.SelectMany((v => new float[] {v.X, v.Y, v.Z})).ToArray());
         var normalVbo = new VertexBufferObject<float>(scene.Meshes[0].Normals.SelectMany(v => new float[] {v.X, v.Y, v.Z}).ToArray());
-        _instanceVbo ??= new VertexBufferObject<float>(_data);
+
+        if (_dataBuffer == null)
+        {
+            _dataBuffer = new ShaderStorageBufferObject();
+            _dataBuffer.SetData(_data);
+        }
+        
         var indices = scene.Meshes[0].GetUnsignedIndices();
         _indicesCount = indices.Length;
         _ebo = new ElementBufferObject(indices);
@@ -73,28 +78,21 @@ public class BatchMesh : IRenderingItem
         
         normalVbo.Bind();
         _vao.SetAttribPointer(1, 3, 3 * sizeof(float), IntPtr.Zero);
-        
-        _instanceVbo.Bind();
-        _vao.SetAttribPointer(2, 3, sizeof(float) * 9, IntPtr.Zero);
-        _vao.SetAttribPointer(3, 3, sizeof(float) * 9, IntPtr.Zero + 3 * sizeof(float));
-        _vao.SetAttribPointer(4, 1, sizeof(float) * 9, IntPtr.Zero + 6 * sizeof(float));
-        _vao.SetAttribPointer(5, 1, sizeof(float) * 9, IntPtr.Zero + 7 * sizeof(float));
-        _vao.SetAttribPointer(6, 1, sizeof(float) * 9, IntPtr.Zero + 8 * sizeof(float));
-        GL.VertexAttribDivisor(2, 1);
-        GL.VertexAttribDivisor(3, 1);
-        GL.VertexAttribDivisor(4, 1);
-        GL.VertexAttribDivisor(5, 1);
-        GL.VertexAttribDivisor(6, 1);
     }
 
-    public void Render(Camera camera)
+    public void Render(Camera camera, float dts)
     {
         _vao.Bind();
         _program.Use();
+        
+        _dataBuffer.BindBuffer(0);
         _program.Upload("viewProjection", camera.ViewProjection);
-        _program.Upload("viewPosition", camera.Position);
-        _program.Upload("windowSize", camera.WindowSize);
+        _program.Upload("dts", dts);
+        _program.Upload("pause", Pause);
         GL.DrawElementsInstanced(PrimitiveType.Triangles, _indicesCount, DrawElementsType.UnsignedInt, IntPtr.Zero, InstanceCount);
+        GL.MemoryBarrier(MemoryBarrierFlags.AllBarrierBits);
+        _vao.Unbind();
+        ShaderProgram.Use(0);
     }
 
     public void Update(float dts)

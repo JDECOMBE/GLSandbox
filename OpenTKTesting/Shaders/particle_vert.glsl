@@ -44,5 +44,5 @@ void main()
     float blue = 0.7 - red;
 
     outData.Color = vec4(red, green, blue, 0.25);
-        gl_Position = projViewMatrix * vec4(particle.Position, 1.0);
+    gl_Position = projViewMatrix * vec4(particle.Position, 1.0);
 }

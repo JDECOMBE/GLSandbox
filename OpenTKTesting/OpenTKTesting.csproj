@@ -4,7 +4,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Configurations>Debug;Release;BatchRendering;RayTracing;SceneRenderer;ParticleSystem</Configurations>
+        <Configurations>Debug;Release;BatchRendering;RayTracing;SceneRenderer;ParticleSystem;Boids</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
@@ -24,8 +24,17 @@
       <Optimize>true</Optimize>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Boids' ">
+      <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
+        <PackageReference Include="ImGui.NET" Version="1.87.3" />
         <PackageReference Include="OpenTK" Version="4.7.1" />
         <PackageReference Include="SixLabors.ImageSharp" Version="2.1.1" />
         <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
@@ -459,6 +468,15 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\tree2.gltf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Shaders\wireframe_frag.glsl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Shaders\wireframe_vert.glsl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Assets\boid.fbx">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

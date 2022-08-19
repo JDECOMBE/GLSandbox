@@ -21,7 +21,7 @@ public class BatchrenderingGame : GameWindow
     private Camera _camera;
     private Vector2? _previousMousePos;
     private Plane _plane = new Plane();
-    private BatchMesh _mesh;
+    private BatchRenderingMesh _mesh;
     private BatchBillboard _billboard;
 
     private ShaderProgram _computeProgram;
@@ -106,7 +106,7 @@ public class BatchrenderingGame : GameWindow
 
         _billboard.Init();
 
-        _mesh = new BatchMesh(@"./Assets/tree2.gltf", nbOfInstances, new VertexBufferObject<float>(_meshesData.ID));
+        _mesh = new BatchRenderingMesh(@"./Assets/tree2.gltf", nbOfInstances, new VertexBufferObject<float>(_meshesData.ID));
         _mesh.Init();
 
 

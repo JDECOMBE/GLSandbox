@@ -10,6 +10,7 @@ Global
 		RayTracing|Any CPU = RayTracing|Any CPU
 		SceneRenderer|Any CPU = SceneRenderer|Any CPU
 		ParticleSystem|Any CPU = ParticleSystem|Any CPU
+		Boids|Any CPU = Boids|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D523008C-CF28-4289-B088-E0BC6D159236}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,5 +25,7 @@ Global
 		{D523008C-CF28-4289-B088-E0BC6D159236}.SceneRenderer|Any CPU.Build.0 = SceneRenderer|Any CPU
 		{D523008C-CF28-4289-B088-E0BC6D159236}.ParticleSystem|Any CPU.ActiveCfg = ParticleSystem|Any CPU
 		{D523008C-CF28-4289-B088-E0BC6D159236}.ParticleSystem|Any CPU.Build.0 = ParticleSystem|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.Boids|Any CPU.ActiveCfg = Boids|Any CPU
+		{D523008C-CF28-4289-B088-E0BC6D159236}.Boids|Any CPU.Build.0 = Boids|Any CPU
 	EndGlobalSection
 EndGlobal

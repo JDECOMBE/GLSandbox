@@ -69,7 +69,7 @@ public class Cube : IRenderingItem
         _currentTime += dts;
     }
 
-    public void Render(Camera camera)
+    public void Render(Camera camera, float dts = 0)
     {
         _vao.Bind();
         _program.Use();

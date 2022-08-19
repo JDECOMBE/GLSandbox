@@ -1,0 +1,137 @@
+#version 430
+
+struct Boid
+{
+    vec3 position;
+    vec3 color;
+    vec3 velocity;
+    vec3 acceleration;
+};
+
+layout(local_size_x = 1) in;
+
+layout (std430, binding=2)  buffer input_data {
+    Boid[] boids;
+};
+
+uniform float maxSpeed;
+uniform float maxForce;
+uniform float alignmentFactor;
+uniform float cohesionFactor;
+uniform float separationFactor;
+
+const uint boidsCount = 1000;
+
+vec3 computeAlignement(Boid boid, uint index) 
+{
+    vec3 steering = vec3(0);
+    int total = 0;
+    for (uint i = 0; i < boidsCount; i++) {
+        if (i != index) {
+            Boid other = boids[i];
+            float dist = distance(boid.position, other.position);
+            if (dist < 5.0) {
+                steering = steering + other.velocity;
+                total++;
+            }
+        }
+    }
+    
+    if (total > 0) {
+        steering = steering / float(total);
+        steering = normalize(steering) * maxSpeed;
+        steering = steering - boid.velocity;
+        if (length(steering) > maxForce)
+            steering = normalize(steering) * maxForce;
+    }
+    
+    return steering;
+}
+
+vec3 computeSeparation(Boid boid, uint index) 
+{
+    vec3 steering = vec3(0);
+    int total = 0;
+    for (uint i = 0; i < boidsCount; i++) {
+        if (i != index) {
+            Boid other = boids[i];
+            float dist = distance(boid.position, other.position);
+            if (dist < 1.5) {
+                vec3 diff = boid.position - other.position;
+                diff = diff / (dist * dist);
+                steering = steering + diff;
+                total++;
+            }
+        }
+    }
+
+    if (total > 0) {
+        steering = steering / float(total);
+        steering = normalize(steering) * maxSpeed;
+        steering = steering - boid.velocity;
+        if (length(steering) > maxForce)
+            steering = normalize(steering) * maxForce;
+    }
+
+    return steering;  
+}
+
+vec3 computeCohesion(Boid boid, uint index) 
+{
+    vec3 steering = vec3(0);
+    int total = 0;
+    for (uint i = 0; i < boidsCount; i++) {
+        if (i != index) {
+            Boid other = boids[i];
+            float dist = distance(boid.position, other.position);
+            if (dist < 5) {
+                steering = steering + other.position;
+                total++;
+            }
+        }
+    }
+
+    if (total > 0) {
+        steering = steering / float(total);
+        steering = steering - boid.position;
+        steering = normalize(steering) * maxSpeed;
+        steering = steering - boid.velocity;
+        if (length(steering) > maxForce)
+            steering = normalize(steering) * maxForce;
+    }
+
+    return steering;
+}
+
+vec3 computeColor(Boid boid, uint index) 
+{
+    int total = 0;
+
+    for (uint i = 0; i < boidsCount; i++) {
+        if (i != index) {
+            Boid other = boids[i];
+            float dist = distance(boid.position, other.position);
+            if (dist < 5) {
+                total++;
+            }
+        }
+    }
+    float r =  min(0.01 * total, 1.0);
+    float g =  r;
+    float b =  min(0.5 * total, 1.0);
+    return vec3(r, g, b);
+}
+
+void main() 
+{
+    uint index = gl_GlobalInvocationID.x;
+    Boid boid = boids[index];
+    
+    vec3 aligment = computeAlignement(boid, index) * alignmentFactor;
+    vec3 separation = computeSeparation(boid, index) * separationFactor;
+    vec3 cohesion = computeCohesion(boid, index) * cohesionFactor;
+    boid.color = computeColor(boid, index);
+    boid.acceleration = aligment + separation + cohesion;
+
+    boids[index] = boid;
+}

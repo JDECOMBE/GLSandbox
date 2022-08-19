@@ -79,7 +79,7 @@ public class SceneRenderer : IRenderingItem
         GL.DepthFunc(DepthFunction.Less);
     }
 
-    public void Render(Camera camera)
+    public void Render(Camera camera, float dts = 0)
     {
         // var lightPos = new Vector3((float) MathHelper.Sin(_currentTime / 2f) * 30f, (float) MathHelper.Cos(_currentTime / 2f) * 30f, 1f);
         var lightPos = new Vector3(0f, 5f, 3f);

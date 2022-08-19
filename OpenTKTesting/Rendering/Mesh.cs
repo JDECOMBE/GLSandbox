@@ -64,7 +64,7 @@ public class Mesh : IRenderingItem
         Console.WriteLine($"Plane VBO ({_vbo.ID})");
     }
 
-    public void Render(Camera camera)
+    public void Render(Camera camera, float dts = 0)
     {
         _vao.Bind();
         _program.Use();
