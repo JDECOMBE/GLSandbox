@@ -10,16 +10,16 @@ public class Camera
 {
     public Vector3 Position { get; set; }
     public Vector3 Target { get; set; }
-    
+
     public Vector3 Direction => (Target - Position).Normalized();
-    
+
     public Vector2 WindowSize { get; private set; }
     public Matrix4 Projection { get; private set; }
-    
+
     public Matrix4 View => Matrix4.LookAt(Position, Target, Vector3.UnitY);
-    public Matrix4 ViewProjection => View * Projection; 
-    
-    
+    public Matrix4 ViewProjection => View * Projection;
+
+
     public Camera(Vector3 target, Vector3 position, Vector2 windowSize)
     {
         Target = target;
@@ -42,5 +42,5 @@ public class Camera
         rayEye.W = 0.0f;
         return (rayEye * View.Inverted()).Xyz.Normalized();
     }
-    
+
 }

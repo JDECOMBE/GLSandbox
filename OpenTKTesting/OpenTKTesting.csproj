@@ -63,31 +63,31 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Ani_Fire_A.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Dragon_Bump_Col2.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Dragon_ground_color.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Dragon_Nor.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Dragon_Nor_mirror2.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Fire_A_2.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Floor_C.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Floor_N.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Floor_S.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\Dragon25.fbx">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -123,55 +123,55 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\handgun_C.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\handgun_Fire.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\handgun_N.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\handgun_S.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Wolf_Body.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Wolf_Eyes_1.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Wolf_Eyes_2.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Wolf_Fur.jpg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\Wolf.fbx">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Base_Color.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Emissive.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Height.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Metallic.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Mixed_AO.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Normal.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Normal_DirectX.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\textures\Sting_Roughness.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Assets\Sting.fbx">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -479,9 +479,210 @@
       <None Update="Assets\boid.fbx">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Assets\sponza.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Assets\sponza.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="Assets\textures\background.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\backgroundBGR.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\background_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\chain_texture.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\chain_texture_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\chain_texture_mask.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\gi_flag.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\lion.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\lion2_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\lion_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\spnza_bricks_a_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\spnza_bricks_a_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\spnza_bricks_a_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_arch_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_arch_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_arch_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_ceiling_a_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_ceiling_a_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_a_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_a_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_a_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_b_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_b_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_b_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_c_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_c_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_column_c_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_curtain_blue_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_curtain_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_curtain_green_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_details_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_details_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_fabric_blue_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_fabric_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_fabric_green_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_fabric_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_flagpole_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_flagpole_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_floor_a_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_floor_a_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_roof_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_thorn_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_thorn_diff.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_thorn_mask.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\sponza_thorn_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_dif.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_hanging.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_plant.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_plant_mask.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_plant_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_round.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_round_bump.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Assets\textures\vase_round_spec.tga">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Assets\textures\backgroundBGR.tga" />
+      <Content Include="Assets\textures\background_bump.png" />
+      <Content Include="Assets\textures\chain_texture_bump.png" />
+      <Content Include="Assets\textures\chain_texture_mask.png" />
+      <Content Include="Assets\textures\gi_flag.tga" />
+      <Content Include="Assets\textures\lion2_bump.png" />
+      <Content Include="Assets\textures\lion_bump.png" />
+      <Content Include="Assets\textures\spnza_bricks_a_bump.png" />
+      <Content Include="Assets\textures\spnza_bricks_a_spec.tga" />
+      <Content Include="Assets\textures\sponza_arch_bump.png" />
+      <Content Include="Assets\textures\sponza_arch_spec.tga" />
+      <Content Include="Assets\textures\sponza_ceiling_a_spec.tga" />
+      <Content Include="Assets\textures\sponza_column_a_bump.png" />
+      <Content Include="Assets\textures\sponza_column_a_spec.tga" />
+      <Content Include="Assets\textures\sponza_column_b_bump.png" />
+      <Content Include="Assets\textures\sponza_column_b_spec.tga" />
+      <Content Include="Assets\textures\sponza_column_c_bump.png" />
+      <Content Include="Assets\textures\sponza_column_c_spec.tga" />
+      <Content Include="Assets\textures\sponza_details_spec.tga" />
+      <Content Include="Assets\textures\sponza_fabric_spec.tga" />
+      <Content Include="Assets\textures\sponza_flagpole_spec.tga" />
+      <Content Include="Assets\textures\sponza_floor_a_spec.tga" />
+      <Content Include="Assets\textures\sponza_thorn_bump.png" />
+      <Content Include="Assets\textures\sponza_thorn_mask.png" />
+      <Content Include="Assets\textures\sponza_thorn_spec.tga" />
+      <Content Include="Assets\textures\vase_bump.png" />
+      <Content Include="Assets\textures\vase_plant_mask.png" />
+      <Content Include="Assets\textures\vase_plant_spec.tga" />
+      <Content Include="Assets\textures\vase_round_bump.png" />
+      <Content Include="Assets\textures\vase_round_spec.tga" />
       <Content Include="Assets\tree.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

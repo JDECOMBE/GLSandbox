@@ -228,7 +228,7 @@ public class SceneRenderer : IRenderingItem
         var vertices = new List<float>();
         foreach (var m in _scene.Meshes)
         {
-            
+
             var uv = m.TextureCoordinateChannels[0];
             var hasTextureCoords = m.HasTextureCoords(0);
             for (var i = 0; i < m.Vertices.Count; i++)

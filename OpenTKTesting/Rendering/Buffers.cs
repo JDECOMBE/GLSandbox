@@ -34,7 +34,7 @@ public class VertexBufferObject<T> : Buffer<T> where T : struct
 {
     public VertexBufferObject(int id) : base(BufferTarget.ArrayBuffer, id)
     {
-        
+
     }
     public VertexBufferObject(T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw) : base(BufferTarget.ArrayBuffer, data.Length, data, usage)
     {
@@ -70,13 +70,13 @@ public class ShaderStorageBufferObject
         GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
         GL.BufferData(BufferTarget.ShaderStorageBuffer, sizeof(float) * data.Length, data, BufferUsageHint.DynamicDraw);
     }
-    
+
     public void SetData(int[] data)
     {
         GL.BindBuffer(BufferTarget.ShaderStorageBuffer, ID);
         GL.BufferData(BufferTarget.ShaderStorageBuffer, sizeof(int) * data.Length, data, BufferUsageHint.DynamicDraw);
     }
-    
+
     public void ImmutableAllocation<T>(int size, T[] data, BufferStorageFlags bufferStorageFlags) where T : struct
     {
         GL.NamedBufferStorage(ID, size, data, bufferStorageFlags);
@@ -98,7 +98,7 @@ public abstract class Buffer<T> where T : struct
 protected Buffer(BufferTarget target, int bufferSize, T[] data, BufferUsageHint usage = BufferUsageHint.StaticDraw)
     {
         Target = target;
-        
+
         ID = GL.GenBuffer();
         Bind();
         GL.BufferData(Target, bufferSize * System.Runtime.CompilerServices.Unsafe.SizeOf<T>(), data, usage);

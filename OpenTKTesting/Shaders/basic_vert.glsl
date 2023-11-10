@@ -12,7 +12,6 @@ void main()
 {
     vec3 positionScaled = position * scale;
     vec3 model = positionScaled + offset;
-    
-    
+
     gl_Position = viewProjection * vec4(model, 1);
 }

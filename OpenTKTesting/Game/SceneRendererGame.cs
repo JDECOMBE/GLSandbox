@@ -26,7 +26,7 @@ public class SceneRendererGame : GameWindow
     public SceneRendererGame(GameWindowSettings settings, NativeWindowSettings nativeWindowSettings)
         : base(settings, nativeWindowSettings)
     {
-        
+
     }
     public SceneRendererGame()
         : base(GameWindowSettings.Default, new NativeWindowSettings() { Size = new (800, 600)})
@@ -76,7 +76,7 @@ public class SceneRendererGame : GameWindow
     {
         if (IsKeyPressed(Keys.Escape))
             Close();
-        
+
         _sceneRenderer.Update((float)args.Time);
         _cube.Update((float)args.Time);
         _frameCount++;

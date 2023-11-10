@@ -15,7 +15,7 @@ public class RayTracingGame : GameWindow
     private ShaderProgram _computeProgram;
     private ShaderProgram _quadTextureProgram;
     private VertexArrayObject _vao;
-    
+
     private int _width = 1920;
     private int _height = 1080;
 
@@ -34,7 +34,7 @@ public class RayTracingGame : GameWindow
 
     public RayTracingGame() : base(GameWindowSettings.Default, new NativeWindowSettings { Size = new(1920, 1080) })
     {
-        
+
     }
 
     private void LogComputeGroups()
@@ -59,7 +59,7 @@ public class RayTracingGame : GameWindow
             new Shader(ShaderType.VertexShader, "../../../Shaders/sprite_vert.glsl"),
             new Shader(ShaderType.FragmentShader, "../../../Shaders/sprite_frag.glsl")
         );
-        
+
         _vao = new VertexArrayObject();
 
         _ = new VertexBufferObject<float>(new float[]
@@ -79,22 +79,22 @@ public class RayTracingGame : GameWindow
         _vao.SetAttribPointer(1, 2, 4 * sizeof(float), IntPtr.Zero + 2 * sizeof(float));
         OpenGLErrorChecker.CheckError();
     }
-    
+
     protected override void OnLoad()
     {
         base.OnLoad();
-        
+
         LogComputeGroups();
 
         InitQuad();
-        
+
         _renderTextureId = GenTexture(_width, _height);
         GL.BindImageTexture(0, _renderTextureId, 0, false, 0, TextureAccess.WriteOnly, SizedInternalFormat.Rgba32f);
 
         _computeProgram = new ShaderProgram(new Shader(ShaderType.ComputeShader, "../../../Shaders/raytracing.comp"));
     }
 
-    
+
     protected override void OnRenderFrame(FrameEventArgs args)
     {
         _frameCount++;
@@ -105,7 +105,7 @@ public class RayTracingGame : GameWindow
             Title = $"FPS: {_frameCount / _time:F2} - {(_time / _frameCount):F4}ms";
             _time = 0;
             _frameCount = 0;
-        }       
+        }
         GL.ActiveTexture(TextureUnit.Texture0);
 
         GL.BindImageTexture(0, _renderTextureId, 0, false, 0, TextureAccess.WriteOnly, SizedInternalFormat.Rgba32f);
@@ -114,15 +114,15 @@ public class RayTracingGame : GameWindow
         GL.MemoryBarrier(MemoryBarrierFlags.ShaderImageAccessBarrierBit);
         GL.ClearColor(1, 0, 0, 1);
         GL.Clear(ClearBufferMask.ColorBufferBit);
-        
+
         _vao.Bind();
         _quadTextureProgram.Use();
-        
+
         GL.BindTexture(TextureTarget.Texture2D, _renderTextureId);
         _quadTextureProgram.Upload("tex", 0);
-        
+
         GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
-        
+
         SwapBuffers();
 
         base.OnRenderFrame(args);
@@ -132,7 +132,7 @@ public class RayTracingGame : GameWindow
     {
         if (IsKeyPressed(Keys.Escape))
             Close();
-        
+
         base.OnUpdateFrame(args);
     }
 

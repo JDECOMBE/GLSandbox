@@ -20,7 +20,7 @@ public class SimpleSpriteGame : GameWindow
     public SimpleSpriteGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
     }
-    
+
     protected override void OnLoad()
     {
         base.OnLoad();
@@ -60,15 +60,15 @@ public class SimpleSpriteGame : GameWindow
         _totalTime += args.Time;
         GL.ClearColor(0, 0, 0, 1);
         GL.Clear(ClearBufferMask.ColorBufferBit);
-        
+
         _vao.Bind();
-        
+
         _program.Use();
-        
+
         GL.ActiveTexture(TextureUnit.Texture0);
         GL.BindTexture(TextureTarget.Texture2D, _textureId);
         _program.Upload("tex", 0);
-        
+
         GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
         SwapBuffers();
         base.OnRenderFrame(args);
@@ -78,7 +78,7 @@ public class SimpleSpriteGame : GameWindow
     {
         if (IsKeyPressed(Keys.Escape))
             Close();
-        
+
         base.OnUpdateFrame(args);
     }
 
@@ -99,7 +99,7 @@ public class SimpleSpriteGame : GameWindow
         img.Frames.RootFrame.CopyPixelDataTo(pixels);
         return (img.Width, img.Height, pixels);
     }
-    
+
     private int GenTexture(string fileName)
     {
         var id = GL.GenTexture();

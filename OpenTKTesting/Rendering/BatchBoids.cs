@@ -28,7 +28,7 @@ public class BatchBoids : IRenderingItem
         InstanceCount = count;
         _dataBuffer = dataBuffer;
     }
-    
+
     public BatchBoids(string fileName, int count, Vector3[] positions, Vector3[] colors, Vector3[] velocity, Vector3[] acceleration)
     {
         _filename = fileName;
@@ -54,12 +54,12 @@ public class BatchBoids : IRenderingItem
             new Shader(ShaderType.FragmentShader, "../../../Shaders/boids_frag.glsl")
         });
 
-        
+
         var assimpContext = new AssimpContext();
         var scene = assimpContext.ImportFile(_filename, PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
         if (!scene.HasMeshes)
             throw new Exception("No Mesh contained");
-        
+
         _vao = new VertexArrayObject();
         var vbo = new VertexBufferObject<float>(scene.Meshes[0].Vertices.SelectMany((v => new float[] {v.X, v.Y, v.Z})).ToArray());
         var normalVbo = new VertexBufferObject<float>(scene.Meshes[0].Normals.SelectMany(v => new float[] {v.X, v.Y, v.Z}).ToArray());
@@ -69,13 +69,13 @@ public class BatchBoids : IRenderingItem
             _dataBuffer = new ShaderStorageBufferObject();
             _dataBuffer.SetData(_data);
         }
-        
+
         var indices = scene.Meshes[0].GetUnsignedIndices();
         _indicesCount = indices.Length;
         _ebo = new ElementBufferObject(indices);
         vbo.Bind();
         _vao.SetAttribPointer(0, 3, 3 * sizeof(float), IntPtr.Zero);
-        
+
         normalVbo.Bind();
         _vao.SetAttribPointer(1, 3, 3 * sizeof(float), IntPtr.Zero);
     }
@@ -84,7 +84,7 @@ public class BatchBoids : IRenderingItem
     {
         _vao.Bind();
         _program.Use();
-        
+
         _dataBuffer.BindBuffer(0);
         _program.Upload("viewProjection", camera.ViewProjection);
         _program.Upload("dts", dts);

@@ -16,15 +16,16 @@ public class Cube : IRenderingItem
     {
         set => _program.Upload("offset", value);
     }
-    
-    public void Init()
+
+    public void
+        Init()
     {
         _program = new ShaderProgram(new[]
         {
             new Shader(ShaderType.VertexShader, "./Shaders/basic_vert.glsl"),
             new Shader(ShaderType.FragmentShader, "./Shaders/basic_frag.glsl")
         });
-        
+
         _vao = new VertexArrayObject();
         _vbo = new VertexBufferObject<float>(new float[]
         {
@@ -58,7 +59,7 @@ public class Cube : IRenderingItem
         _vao.SetAttribPointer(0, 3, 3 * sizeof(float), IntPtr.Zero);
         GL.Enable(EnableCap.DepthTest);
         GL.DepthFunc(DepthFunction.Less);
-        
+
         Console.WriteLine($"Loading VAO ({_vao.ID})");
         Console.WriteLine($"Loading VBO ({_vbo.ID})");
     }

@@ -43,15 +43,15 @@ public class Mesh : IRenderingItem
             new Shader(ShaderType.FragmentShader, "./Shaders/basic_frag.glsl")
         });
 
-        
+
         var assimpContext = new AssimpContext();
         var scene = assimpContext.ImportFile(_filename, PostProcessPreset.TargetRealTimeQuality | PostProcessSteps.FlipUVs);
         if (!scene.HasMeshes)
             throw new Exception("No Mesh contained");
-        
+
         Color = Vector3.One;
         Scale = 1f;
-        
+
         _vao = new VertexArrayObject();
         _vbo = new VertexBufferObject<float>(scene.Meshes[0].Vertices.SelectMany((v => new float[] {v.X, v.Y, v.Z})).ToArray());
         var indices = scene.Meshes[0].GetUnsignedIndices();
